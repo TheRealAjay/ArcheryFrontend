@@ -1,16 +1,13 @@
 <template>
 
 
-  <form>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input v-model="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Passwort</label>
-      <input v-model="password" type="password" class="form-control" id="password">
-    </div>
-    <button @click="fetchToken" type="submit" class="btn btn-primary">Anmelden</button>
+  <form novalidate>
+    <ValidatedInput v-model="email" type="email" label="Nutzername/Email" :valid=true></ValidatedInput>
+    <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort" :valid=valid></ValidatedInput>
+    <button @click="fetchToken" class="btn btn-success" type="button">Anmelden</button>
+
+    <p class="m-2">Noch keinen Account erstell? Hier registrieren!</p>
+    <button class="btn btn-primary" @click="$emit('register', true)" type="button">Registrieren</button>
   </form>
 
 
@@ -20,20 +17,26 @@
 <script>
 import axios from "axios";
 import config from '../../config.json'
+import ValidatedInput from "@/components/ValidatedInput.vue";
 
 export default {
   name: "Login",
+  components: {ValidatedInput},
+  emits:['token', 'register'],
   data() {
     return {
       email: '',
       password: '',
       apiPath: '/Auth/login',
-      token: ''
+      valid: true
     }
   },
   methods: {
+    validate(){
+
+    },
     async fetchToken() {
-      this.token = await axios({
+      let response = await axios({
         url: config.api.url + this.apiPath,
         method: "post",
         headers: {
@@ -46,17 +49,11 @@ export default {
         }
       })
           .then(function (response) {
-            console.log(response)
-            return response["data"]["token"];
+            return response["data"]["token"]
           })
-          .catch(err => console.log(err))
+          .catch(err => console.log(err + "ERROR caught"))
+      this.$emit('token', response)
     }
   }
 }
 </script>
-
-<style scoped>
-form{
-  left: 50%;
-}
-</style>

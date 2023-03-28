@@ -3,6 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 // const axios = require('../node_modules/axios/dist/browser/axios.cjs')
 import Login from './components/Login.vue'
+import Register from "@/components/Register.vue";
 </script>
 
 <script>
@@ -13,12 +14,20 @@ export default {
     return {
       testMsg: 'test message',
       token: '',
-      url: 'http://88.198.105.137:5000/Auth/login'
+      register: false
     }
   }
 }
 </script>
 
 <template>
-<Login></Login>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <Login @token="(msg) => this.token = msg" v-if="!token && !register" @register="(msg) => this.register = msg"></Login>
+        <Register v-if="!token && register"></Register>
+      </div>
+    </div>
+  </div>
 </template>
