@@ -4,13 +4,17 @@
     <div v-for="temp in errorMsg.split(';')" v-if="!valid" class="text-danger">
       {{temp}}
     </div>
+    <br v-if="!optionalValidation && !valid">
+    <div v-if="!optionalValidation" class="text-danger">
+      {{optionalErrorMsg}}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "ValidatedInput",
-  props:['label', 'type', 'errorMsg', 'modelValue', 'valid'],
+  props:['label', 'type', 'errorMsg', 'modelValue', 'valid', 'optionalErrorMsg', 'optionalValidation'],
   computed:{
     inputValue:{
       get(){

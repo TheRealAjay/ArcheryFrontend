@@ -1,11 +1,21 @@
 <template>
   <form>
-    <ValidatedInput v-model="email" label="Email" type="email" error-msg="Bitte geben sie eine valide Email ein." :valid=validation.email></ValidatedInput>
-    <ValidatedInput v-model="username" label="Nutzername" type="text" error-msg="3-20 Zeichen;Nur Zahlen und Buchstaben" :valid=validation.username></ValidatedInput>
-    <ValidatedInput v-model="firstName" label="Vorname" type="text" error-msg="Bitte geben sie Ihren Vornamen ein" :valid=validation.firstName></ValidatedInput>
-    <ValidatedInput v-model="lastName" label="Nachname" type="text" error-msg="Bitte geben sie Ihren Nachnamen ein" :valid=validation.lastName></ValidatedInput>
-    <ValidatedInput v-model="password" label="Passwort" type="password" error-msg="Min. 8 Zeichen lang;Min. ein Groß- und Kleinbuchstaben;Min. eine Zahl und ein Sonderzeichen" :valid=validation.password></ValidatedInput>
-    <ValidatedInput v-model="repeatPassword" label="Passwort wiederholen" type="password" error-msg="Passwort stimmt nicht überein" :valid=validation.repeatPassword></ValidatedInput>
+    <ValidatedInput v-model="email" label="Email" type="email" error-msg="Bitte geben sie eine valide Email ein"
+                    :valid=validation.email optional-error-msg="Diese Email wurde bereits registriert"
+                    :optional-validation=validation.emailUnique></ValidatedInput>
+    <ValidatedInput v-model="username" label="Nutzername" type="text" error-msg="3-20 Zeichen;Nur Zahlen und Buchstaben"
+                    :valid=validation.username optional-error-msg="Diser Nutzername ist bereits vergeben"
+                    :optional-validation=validation.usernameUnique></ValidatedInput>
+    <ValidatedInput v-model="firstName" label="Vorname" type="text" error-msg="Bitte geben sie Ihren Vornamen ein"
+                    :valid=validation.firstName :optional-validation=true></ValidatedInput>
+    <ValidatedInput v-model="lastName" label="Nachname" type="text" error-msg="Bitte geben sie Ihren Nachnamen ein"
+                    :valid=validation.lastName :optional-validation=true></ValidatedInput>
+    <ValidatedInput v-model="password" label="Passwort" type="password"
+                    error-msg="Min. 8 Zeichen lang;Min. ein Groß- und Kleinbuchstaben;Min. eine Zahl und ein Sonderzeichen"
+                    :valid=validation.password :optional-validation=true></ValidatedInput>
+    <ValidatedInput v-model="repeatPassword" label="Passwort wiederholen" type="password"
+                    error-msg="Passwort stimmt nicht überein" :valid=validation.repeatPassword
+                    :optional-validation=true></ValidatedInput>
     <button @click="registerApi" type="button" class="btn btn-success">Registrieren</button>
   </form>
 </template>
@@ -20,13 +30,17 @@ export default {
   components: {ValidatedInput},
   data() {
     return {
-      apiPath: "/Auth/register",
+      api: {
+        registerApiPath: "/Auth/register",
+        ifEmailExistsApiPath: "/Archery/getIfUserExists",
+        ifUserExistsApiPath: ""
+      },
       email: "",
       username: "",
       password: "",
       firstName: "",
       lastName: "",
-      repeatPassword:"",
+      repeatPassword: "",
       validation: {
         email: true,
         username: true,
@@ -34,6 +48,8 @@ export default {
         firstName: true,
         lastName: true,
         repeatPassword: true,
+        emailUnique: true,
+        usernameUnique: true
       }
     }
   },
@@ -43,7 +59,7 @@ export default {
         return
       }
       let response = await axios({
-        url: config.api.url + this.apiPath,
+        url: config.api.url + this.registerApiPath,
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -59,17 +75,8 @@ export default {
       })
           .then(function (response) {
             console.log(response)
-            debugger
-            //return response["data"]["token"]
           })
           .catch(err => console.log(err + "ERROR caught"))
-      // if (response != undefined) {
-      //   this.valid = true;
-      //   this.$emit('token', response)
-      // }
-      // else{
-      //   this.valid = false;
-      // }
     },
     validateInput() {
       let returnValue = true
@@ -79,7 +86,11 @@ export default {
       if (!/(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/.test(this.email)) {
         this.validation.email = false;
         returnValue = false;
+      } else if (this.checkIfEmailExists()) {
+        this.validation.emailUnique = false;
+        returnValue = false;
       }
+
       if (!/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(this.password)) {
         this.validation.password = false;
         returnValue = false;
@@ -90,6 +101,9 @@ export default {
       }
       if (!/^[A-Za-z0-9]{3,20}$/.test(this.username)) {
         this.validation.username = false;
+        returnValue = false;
+      } else if (this.checkIfUsernameExists()) {
+        this.validation.usernameUnique = false;
         returnValue = false;
       }
       if (this.firstName.length < 1) {
@@ -102,8 +116,35 @@ export default {
       }
       return returnValue;
     },
-    getUserByEmail(){
-
+    async checkIfEmailExists() {
+      return await axios({
+        url: config.api.url + this.ifEmailExistsApiPath,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "*/*",
+        },
+        data: {
+          email: this.email
+        }
+      }).then(function (result) {
+        return result["data"]["boolean"]
+      }).catch((e => console.log(e + "Error in checkIfEmailExists")))
+    },
+    async checkIfUsernameExists() {
+      return await axios({
+        url: config.api.url + this.ifUserExistsApiPath,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "*/*",
+        },
+        data: {
+          username: this.username
+        }
+      }).then(function (result) {
+        return result["data"]["boolean"]
+      }).catch((e => console.log(e + "Error in checkIfUsernameExists")))
     }
   }
 }
