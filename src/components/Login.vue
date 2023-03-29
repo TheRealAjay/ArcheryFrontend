@@ -3,13 +3,13 @@
 
   <form novalidate>
     <ValidatedInput v-model="email" type="email" label="Nutzername/Email" :valid=true></ValidatedInput>
-    <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort" :valid=valid></ValidatedInput>
+    <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort"
+                    :valid=valid></ValidatedInput>
     <button @click="fetchToken" class="btn btn-success" type="button">Anmelden</button>
 
     <p class="m-2">Noch keinen Account erstell? Hier registrieren!</p>
     <button class="btn btn-primary" @click="$emit('register', true)" type="button">Registrieren</button>
   </form>
-
 
 
 </template>
@@ -22,7 +22,7 @@ import ValidatedInput from "@/components/ValidatedInput.vue";
 export default {
   name: "Login",
   components: {ValidatedInput},
-  emits:['token', 'register'],
+  emits: ['token', 'register'],
   data() {
     return {
       email: '',
@@ -32,9 +32,6 @@ export default {
     }
   },
   methods: {
-    validate(){
-
-    },
     async fetchToken() {
       let response = await axios({
         url: config.api.url + this.apiPath,
@@ -52,7 +49,13 @@ export default {
             return response["data"]["token"]
           })
           .catch(err => console.log(err + "ERROR caught"))
-      this.$emit('token', response)
+      if (response != undefined) {
+        this.valid = true;
+        this.$emit('token', response)
+      }
+      else{
+        this.valid = false;
+      }
     }
   }
 }
