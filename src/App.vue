@@ -26,7 +26,7 @@ export default {
       <div class="col-12">
 
         <Login @token="(msg) => this.token = msg" v-if="!token && !register" @register="(msg) => this.register = msg"></Login>
-        <Register v-if="!token && register"></Register>
+        <Register v-if="!token && register" @registered="(msg)=>register = msg"></Register>
       </div>
     </div>
   </div>

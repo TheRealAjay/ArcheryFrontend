@@ -27,13 +27,13 @@ import config from "../../config.json";
 
 export default {
   name: "Register",
+  emits: ["registered"],
   components: {ValidatedInput},
   data() {
     return {
       api: {
         registerApiPath: "/Auth/register",
-        ifEmailExistsApiPath: "/Archery/getIfUserExists",
-        ifUserExistsApiPath: ""
+        checkUserInfo: "/Archery/getUserInfo/"
       },
       email: "",
       username: "",
@@ -54,12 +54,14 @@ export default {
     }
   },
   methods: {
+
+    //Api call with all necessary data for user registration
     async registerApi() {
-      if (!this.validateInput()) {
+      if (!await this.validateInput()) {
         return
       }
       let response = await axios({
-        url: config.api.url + this.registerApiPath,
+        url: config.api.url + this.api.registerApiPath,
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -74,19 +76,25 @@ export default {
         }
       })
           .then(function (response) {
-            console.log(response)
+            return response;
           })
           .catch(err => console.log(err + "ERROR caught"))
+      if (response != undefined) {
+        this.$emit("registered", false);
+      }
     },
-    validateInput() {
+
+    //Validates all inputs
+    async validateInput() {
       let returnValue = true
       for (let key in this.validation) {
         this.validation[key] = true
       }
+      debugger
       if (!/(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/.test(this.email)) {
         this.validation.email = false;
         returnValue = false;
-      } else if (this.checkIfEmailExists()) {
+      } else if (await this.checkIfUserExists(this.email, "")) {
         this.validation.emailUnique = false;
         returnValue = false;
       }
@@ -99,10 +107,12 @@ export default {
         this.validation.repeatPassword = false;
         returnValue = false;
       }
+      debugger
       if (!/^[A-Za-z0-9]{3,20}$/.test(this.username)) {
         this.validation.username = false;
         returnValue = false;
-      } else if (this.checkIfUsernameExists()) {
+      }
+      else if (await this.checkIfUserExists("", this.username)) {
         this.validation.usernameUnique = false;
         returnValue = false;
       }
@@ -116,35 +126,24 @@ export default {
       }
       return returnValue;
     },
-    async checkIfEmailExists() {
+
+    //returns if either email or username are already registered (used in validation)
+    async checkIfUserExists(email, username) {
       return await axios({
-        url: config.api.url + this.ifEmailExistsApiPath,
+        url: config.api.url + this.api.checkUserInfo,
         method: "post",
         headers: {
           "Content-Type": "application/json",
           "Accept": "*/*",
         },
         data: {
-          email: this.email
+          email: email,
+          nickname: username
         }
       }).then(function (result) {
+        debugger
         return result["data"]["boolean"]
-      }).catch((e => console.log(e + "Error in checkIfEmailExists")))
-    },
-    async checkIfUsernameExists() {
-      return await axios({
-        url: config.api.url + this.ifUserExistsApiPath,
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "*/*",
-        },
-        data: {
-          username: this.username
-        }
-      }).then(function (result) {
-        return result["data"]["boolean"]
-      }).catch((e => console.log(e + "Error in checkIfUsernameExists")))
+      }).catch((e => console.log(e + "Error in checkIfUserExists")))
     }
   }
 }
