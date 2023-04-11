@@ -18,7 +18,7 @@
 <script>
 import axios from "axios";
 import config from '../../config.json'
-import ValidatedInput from "@/components/ValidatedInput.vue";
+import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 
 export default {
   name: "Login",
