@@ -1,7 +1,4 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-// const axios = require('../node_modules/axios/dist/browser/axios.cjs')
 import Login from './components/Login.vue'
 import Register from "@/components/Register.vue";
 import Dashboard from "@/components/Dashboard.vue";
