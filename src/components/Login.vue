@@ -2,6 +2,7 @@
 
 
   <form novalidate>
+    <h3 class="mb-3">Login</h3>
     <ValidatedInput v-model="email" type="email" label="Nutzername/Email" :valid=true></ValidatedInput>
     <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort"
                     :valid=valid></ValidatedInput>
