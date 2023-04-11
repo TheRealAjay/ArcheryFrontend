@@ -17,6 +17,8 @@
                     error-msg="Passwort stimmt nicht überein" :valid=validation.repeatPassword
                     :optional-validation=true></ValidatedInput>
     <button @click="registerApi" type="button" class="btn btn-success">Registrieren</button>
+    <br>
+    <button @click="$emit('login')" type="button" class="btn btn-primary">Login</button>
   </form>
 </template>
 
@@ -27,7 +29,7 @@ import config from "../../config.json";
 
 export default {
   name: "Register",
-  emits: ["registered"],
+  emits: ["registered, login"],
   components: {ValidatedInput},
   data() {
     return {
@@ -80,7 +82,7 @@ export default {
           })
           .catch(err => console.log(err + "ERROR caught"))
       if (response != undefined) {
-        this.$emit("registered", false);
+        this.$emit("registered", true);
       }
     },
 
