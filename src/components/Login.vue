@@ -1,14 +1,15 @@
 <template>
 
 
-  <form novalidate>
+  <form novalidate class="archery-form-style">
+    <h3 class="mb-3">Login</h3>
     <ValidatedInput v-model="email" type="email" label="Nutzername/Email" :valid=true></ValidatedInput>
     <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort"
                     :valid=valid></ValidatedInput>
-    <button @click="fetchToken" class="btn btn-success" type="button">Anmelden</button>
+    <button @click="fetchToken" class="btn text-uppercase" type="button">Anmelden</button>
 
-    <p class="m-2">Noch keinen Account erstell? Hier registrieren!</p>
-    <button class="btn btn-primary" @click="$emit('register', true)" type="button">Registrieren</button>
+    <p class="m-2">Noch keinen Account erstellt? Hier registrieren!</p>
+    <button class="btn text-uppercase" @click="$emit('register', true)" type="button">Jetzt Registrieren</button>
   </form>
 
 
@@ -17,7 +18,7 @@
 <script>
 import axios from "axios";
 import config from '../../config.json'
-import ValidatedInput from "@/components/ValidatedInput.vue";
+import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 
 export default {
   name: "Login",
@@ -49,7 +50,7 @@ export default {
             return response["data"]["token"]
           })
           .catch(err => console.log(err + "ERROR caught"))
-      if (response != undefined) {
+      if (response !== undefined) {
         this.valid = true;
         this.$emit('token', response)
       }

@@ -1,5 +1,13 @@
 <template>
-  <form>
+  <form class="archery-form-style">
+    <h3 class="mb-3">Registriere dich jetzt</h3>
+    <p class="mb-3">
+      Bringe dein Bogenschießen auf die nächste Stufe mit Archer's Companion.
+    </p>
+    <p class="mb-3">
+      Unser Score-Tracking-Tool und benutzerdefinierte Parkours ermöglichen es dir, deine Leistung zu verbessern und
+      dich mit anderen Bogenschützen zu messen. Registriere dich noch heute!
+    </p>
     <ValidatedInput v-model="email" label="Email" type="email" error-msg="Bitte geben sie eine valide Email ein"
                     :valid=validation.email optional-error-msg="Diese Email wurde bereits registriert"
                     :optional-validation=validation.emailUnique></ValidatedInput>
@@ -16,18 +24,20 @@
     <ValidatedInput v-model="repeatPassword" label="Passwort wiederholen" type="password"
                     error-msg="Passwort stimmt nicht überein" :valid=validation.repeatPassword
                     :optional-validation=true></ValidatedInput>
-    <button @click="registerApi" type="button" class="btn btn-success">Registrieren</button>
+    <button @click="registerApi" type="button" class="btn">Registrieren</button>
+    <br>
+    <button @click="$emit('login')" type="button" class="btn">Login</button>
   </form>
 </template>
 
 <script>
-import ValidatedInput from "@/components/ValidatedInput.vue";
+import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 import axios from "axios";
 import config from "../../config.json";
 
 export default {
   name: "Register",
-  emits: ["registered"],
+  emits: ["registered", "login"],
   components: {ValidatedInput},
   data() {
     return {
@@ -80,7 +90,7 @@ export default {
           })
           .catch(err => console.log(err + "ERROR caught"))
       if (response != undefined) {
-        this.$emit("registered", false);
+        this.$emit("registered", true);
       }
     },
 
@@ -90,7 +100,6 @@ export default {
       for (let key in this.validation) {
         this.validation[key] = true
       }
-      debugger
       if (!/(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/.test(this.email)) {
         this.validation.email = false;
         returnValue = false;
@@ -107,12 +116,10 @@ export default {
         this.validation.repeatPassword = false;
         returnValue = false;
       }
-      debugger
       if (!/^[A-Za-z0-9]{3,20}$/.test(this.username)) {
         this.validation.username = false;
         returnValue = false;
-      }
-      else if (await this.checkIfUserExists("", this.username)) {
+      } else if (await this.checkIfUserExists("", this.username)) {
         this.validation.usernameUnique = false;
         returnValue = false;
       }
@@ -141,7 +148,6 @@ export default {
           nickname: username
         }
       }).then(function (result) {
-        debugger
         return result["data"]["boolean"]
       }).catch((e => console.log(e + "Error in checkIfUserExists")))
     }
