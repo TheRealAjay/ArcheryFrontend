@@ -4,7 +4,7 @@
     <p class="mb-3">
       Bringe dein Bogenschießen auf die nächste Stufe mit Archer's Companion.
     </p>
-    <p class="mb-3">
+    <p class="mb-5">
       Unser Score-Tracking-Tool und benutzerdefinierte Parkours ermöglichen es dir, deine Leistung zu verbessern und
       dich mit anderen Bogenschützen zu messen. Registriere dich noch heute!
     </p>
@@ -24,9 +24,7 @@
     <ValidatedInput v-model="repeatPassword" label="Passwort wiederholen" type="password"
                     error-msg="Passwort stimmt nicht überein" :valid=validation.repeatPassword
                     :optional-validation=true></ValidatedInput>
-    <button @click="registerApi" type="button" class="btn">Registrieren</button>
-    <br>
-    <button @click="$emit('login')" type="button" class="btn">Login</button>
+    <button @click="registerApi" type="button" class="btn mt-4">Registrieren</button>
   </form>
 </template>
 
@@ -37,7 +35,7 @@ import config from "../../config.json";
 
 export default {
   name: "Register",
-  emits: ["registered", "login"],
+  emits: ["registered"],
   components: {ValidatedInput},
   data() {
     return {

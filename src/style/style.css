@@ -1,46 +1,46 @@
 * {
-    background-color : #0A1929;
-    color            : #FFFFFF;
+    background-color: #0A1929;
+    color: #FFFFFF;
 }
 
 body {
-    background-color : #0A1929 !important;
+    background-color: #0A1929 !important;
 }
 
 .archery-form-style input.form-control {
-    border           : none;
-    border-radius    : 0;
-    border-bottom    : 2px solid #FFFFFF;
-    background-color : #0A1929 !important;
-    color            : #FFFFFF;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #FFFFFF;
+    background-color: #0A1929 !important;
+    color: #FFFFFF;
 }
 
 .archery-form-style input.form-control::placeholder {
-    color            : #9b9b9b;
+    color: #9b9b9b;
 }
 
 
 .archery-form-style input.form-control:-webkit-autofill,
 .archery-form-style input.form-control:-webkit-autofill:hover,
 .archery-form-style input.form-control:-webkit-autofill:focus,
-.archery-form-style input.form-control:-webkit-autofill:active{
+.archery-form-style input.form-control:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #0A1929 inset !important;
 }
 
-.archery-form-style input.form-control:-webkit-autofill{
+.archery-form-style input.form-control:-webkit-autofill {
     -webkit-text-fill-color: #FFFFFF !important;
 }
 
 .archery-form-style input.form-control:focus,
-.archery-form-style input.form-control:active{
+.archery-form-style input.form-control:active {
     box-shadow: none;
 }
 
-.archery-form-style div.error-message{
+.archery-form-style div.error-message {
     margin-left: 12px;
 }
 
-.archery-form-style button.btn{
+.archery-form-style button.btn {
     border: #FFFFFF solid 1px;
     color: #FFFFFF;
     border-radius: 10px;
@@ -48,6 +48,11 @@ body {
 
 .archery-form-style input,
 .archery-form-style p,
-.archery-form-style button{
+.archery-form-style button {
     opacity: 0.65;
+}
+
+#app div.container-fluid {
+    padding: 0;
+
 }

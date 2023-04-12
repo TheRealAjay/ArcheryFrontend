@@ -2,14 +2,13 @@
 
 
   <form novalidate class="archery-form-style">
-    <h3 class="mb-3">Login</h3>
+    <h3 class="mb-4">Login</h3>
     <ValidatedInput v-model="email" type="email" label="Nutzername/Email" :valid=true></ValidatedInput>
     <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort"
                     :valid=valid></ValidatedInput>
-    <button @click="fetchToken" class="btn text-uppercase" type="button">Anmelden</button>
+    <button @click="fetchToken" class="btn text-uppercase mt-4" type="button">Anmelden</button>
 
-    <p class="m-2">Noch keinen Account erstellt? Hier registrieren!</p>
-    <button class="btn text-uppercase" @click="$emit('register', true)" type="button">Jetzt Registrieren</button>
+    <p class="m-2" @click="$emit('register', true)">Noch keinen Account erstellt? Hier registrieren!</p>
   </form>
 
 
