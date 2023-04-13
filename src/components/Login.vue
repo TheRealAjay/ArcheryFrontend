@@ -51,7 +51,8 @@ export default {
           .catch(err => console.log(err + "ERROR caught"))
       if (response !== undefined) {
         this.valid = true;
-        this.$emit('token', response)
+        this.$emit('token');
+        localStorage.bearerToken = response;
       }
       else{
         this.valid = false;
