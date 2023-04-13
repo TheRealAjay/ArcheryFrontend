@@ -34,18 +34,17 @@
 
 <script>
 import offcanvas from "bootstrap/js/src/offcanvas";
-import jquery from "jquery/dist/jquery"
 export default {
   name: "Navigation",
   emits: ["register", "login"],
   methods:{
     registerEvent(){
       this.$emit('register')
-      offcanvas.getInstance(jquery(".offcanvas")).hide()
+      offcanvas.getInstance(document.querySelector(".offcanvas")).hide()
     },
     loginEvent(){
       this.$emit('login')
-      offcanvas.getInstance(jquery(".offcanvas")).hide()
+      offcanvas.getInstance(document.querySelector(".offcanvas")).hide()
     }
   }
 }
