@@ -1,5 +1,19 @@
 {
   "api": {
     "url": "http://88.198.105.137:5000"
+  },
+  "view": {
+    "Home": 0,
+    "Register": 1,
+    "Login": 2,
+    "Dashboard": 3,
+    "EventOverview": 4,
+    "EventHistory": 5,
+    "NewEvent": 6,
+    "Settings": 7,
+    "Event": 8,
+    "Target": 9,
+    "EventResults": 10,
+    "Statistics": 11
   }
 }

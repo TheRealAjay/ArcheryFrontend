@@ -7,8 +7,8 @@
     <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort"
                     :valid=valid></ValidatedInput>
     <button @click="fetchToken" class="btn text-uppercase mt-4" type="button">Anmelden</button>
-
-    <p class="m-2" @click="$emit('register', true)">Noch keinen Account erstellt? Hier registrieren!</p>
+<!--Todo: make visible as link-->
+    <p class="m-2" @click="$emit('register')">Noch keinen Account erstellt? Hier registrieren!</p>
   </form>
 
 
@@ -22,7 +22,7 @@ import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 export default {
   name: "Login",
   components: {ValidatedInput},
-  emits: ['token', 'register'],
+  emits: ['register', 'success'],
   data() {
     return {
       email: '',
@@ -46,13 +46,16 @@ export default {
         }
       })
           .then(function (response) {
+            localStorage.Username =  response["data"]["username"];
+            localStorage.Email = response["data"]["email"];
+            localStorage.ProfilePicture = response["data"]["base64String"];
+            localStorage.BearerToken = response["data"]["token"];
             return response["data"]["token"]
           })
           .catch(err => console.log(err + "ERROR caught"))
       if (response !== undefined) {
         this.valid = true;
-        this.$emit('token');
-        localStorage.bearerToken = response;
+        this.$emit('success')
       }
       else{
         this.valid = false;
