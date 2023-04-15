@@ -156,3 +156,29 @@ button.navbar-toggler:focus{
     height        : 100%;
     border        : 2px solid white;
 }
+
+div.offcanvas div.offcanvas-body{
+    font-size: 24px;
+}
+
+div.offcanvas div.offcanvas-body li{
+    margin-bottom: 1%;
+}
+
+div.offcanvas-body div.profile{
+    margin-bottom: 20%;
+}
+
+div.offcanvas-body div.profile img{
+    margin-bottom: 5%;
+}
+
+div.offcanvas-body{
+    margin-left: 5%;
+}
+
+div.home-container img.home-image{
+    position: absolute;
+    right: 0;
+    max-width: 100%;
+}

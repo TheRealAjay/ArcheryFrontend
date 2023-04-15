@@ -11,11 +11,15 @@ import {faBullseye} from "@fortawesome/free-solid-svg-icons";
 import {faCalendar} from "@fortawesome/free-regular-svg-icons";
 import {faGears} from "@fortawesome/free-solid-svg-icons";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faSquareCaretLeft} from "@fortawesome/free-regular-svg-icons";
+import {faClockRotateLeft} from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBullseye)
 library.add(faCalendar)
 library.add(faGears)
 library.add(faXmark)
+library.add(faSquareCaretLeft)
+library.add(faClockRotateLeft)
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
 
