@@ -71,9 +71,21 @@ body, .offcanvas {
     opacity: 0.65;
 }
 
+/*.archery-form-style input[type="date"],*/
+/*.archery-form-style input[type="time"]*/
+/*{*/
+/*    color-scheme: dark;*/
+/*    opacity: 0.65;*/
+/*}*/
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.65;
+}
+
+
 #app div.container-fluid {
     padding: 0;
-
 }
 
 button.navbar-toggler:focus{
@@ -181,4 +193,9 @@ div.home-container img.home-image{
     position: absolute;
     right: 0;
     max-width: 100%;
+}
+
+.archery-form-style a{
+    color: #FFFFFF;
+    text-decoration: none;
 }

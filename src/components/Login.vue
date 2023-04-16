@@ -7,7 +7,6 @@
         <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password" type="password" label="Passwort"
                         :valid=valid></ValidatedInput>
         <button @click="fetchToken" class="btn text-uppercase mt-4" type="button">Anmelden</button>
-        <!--Todo: make visible as link-->
         <p class="mt-4 mb-0">Noch keinen Account erstellt? </p>
         <a href="#" class="archery-link" @click="$emit('register')">Hier registrieren!</a>
     </form>

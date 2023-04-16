@@ -33,7 +33,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#"
-                               @click="$emit('logout'); changeView(config.view.Settings)">Abmelden</a>
+                               @click="changeView(config.view.Login); $emit('logout')">Abmelden</a>
                         </li>
                     </ul>
                     <ul v-else class="navbar-nav justify-content-end flex-grow-1 pe-3">

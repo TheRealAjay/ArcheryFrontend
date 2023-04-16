@@ -15,6 +15,9 @@
                     <div class="overlay red"></div>
                 </div>
             </div>
+            <div class="col-12">
+                
+            </div>
         </div>
     </div>
 </template>
