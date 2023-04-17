@@ -108,6 +108,15 @@ button.navbar-toggler:focus {
     min-height    : 55px;
 }
 
+.archery-button.no-pointer {
+    cursor : default;
+}
+
+.archery-button.large {
+    max-height : 150px;
+    height     : 150px;
+}
+
 .archery-button .background {
     width         : 100%;
     height        : 100%;
@@ -160,6 +169,20 @@ button.navbar-toggler:focus {
     text-align  : center;
 }
 
+.archery-button .text.left {
+    padding-left : 25px;
+    text-align   : left;
+}
+
+.archery-button .text .light {
+    font-family : Lato, serif;
+    font-size   : 18px;
+}
+
+.archery-button .text .light.small {
+    font-size : 14px;
+}
+
 .archery-button .outline {
     position      : absolute;
     border-radius : 10px;
@@ -167,6 +190,19 @@ button.navbar-toggler:focus {
     width         : 100%;
     height        : 100%;
     border        : 2px solid white;
+}
+
+.archery-button .outline::after {
+    content       : "";
+    display       : inline-block;
+    border-radius : 10px;
+    border        : 1px solid white;
+    z-index       : 4;
+    position      : absolute;
+    left          : 5px;
+    top           : 5px;
+    width         : calc(100% - 10px);
+    height        : calc(100% - 10px);
 }
 
 div.offcanvas div.offcanvas-body {

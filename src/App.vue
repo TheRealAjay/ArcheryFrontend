@@ -8,7 +8,6 @@ import EventHistory from "@/components/EventHistory.vue";
 import Home from "@/components/Home.vue";
 import NewEvent from "@/components/NewEvent.vue";
 import Settings from "@/components/Settings.vue";
-import LoadingScreen from "@/components/LoadingScreen.vue";
 import EventOverview from "@/components/EventOverview.vue";
 
 </script>
@@ -23,6 +22,7 @@ export default {
             register: false,
             showWindow: 2,
             bearerTokenExists: false,
+            eventID: 0,
             config
         }
     },
@@ -62,7 +62,8 @@ export default {
         </div>
     </div>
     <Dashboard v-if="showWindow === config.view.Dashboard" @setShowWindow="(param) => showWindow = param"></Dashboard>
-    <EventOverview v-if="showWindow === config.view.EventOverview" @setShowWindow="(param) => showWindow = param"></EventOverview>
+    <EventOverview v-if="showWindow === config.view.EventOverview" @eventID="(param) => eventID = param"
+                   @setShowWindow="(param) => showWindow = param"></EventOverview>
     <EventHistory v-if="showWindow === config.view.EventHistory"
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>

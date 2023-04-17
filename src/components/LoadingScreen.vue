@@ -29,7 +29,6 @@ export default {
     background-color : #0A1929;
     top              : 0;
     z-index          : 99;
-    animation        : fade-in-right 0.3s ease-in;
 }
 
 .overlay svg {
@@ -59,17 +58,6 @@ export default {
     animation-play-state              : running;
     -webkit-transform-origin          : center center;
     transform-origin                  : center center;
-}
-
-@keyframes fade-in-right {
-    from {
-        opacity   : 0;
-        transform : translateX(-15px);
-    }
-    to {
-        opacity   : 1;
-        transform : translateX(0);
-    }
 }
 
 @-webkit-keyframes stroke-spacing {

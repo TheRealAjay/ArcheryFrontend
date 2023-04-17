@@ -115,6 +115,7 @@
 </template>
 
 <script>
+
 import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 import axios from "axios";
 import config from "../../config.json";
