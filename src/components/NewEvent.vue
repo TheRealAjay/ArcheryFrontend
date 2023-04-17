@@ -121,6 +121,7 @@ import config from "../../config.json";
 export default {
     name: "NewEvent",
     components: {ValidatedInput},
+    emits:['setShowWindow'],
     data() {
         return {
             api: {
@@ -188,10 +189,11 @@ export default {
             })
         },
         async createEvent() {
-            let test = this.values.eventId
+            this.$emit('setShowWindow', config.view.LoadingScreen)
             await this.eventRequest()
             await this.targetRequest()
             await this.participantRequest()
+            this.$emit('setShowWindow', config.view.EventOverview)
         },
         async eventRequest() {
             let response = await axios({
