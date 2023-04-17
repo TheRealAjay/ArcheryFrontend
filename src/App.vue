@@ -10,6 +10,7 @@ import NewEvent from "@/components/NewEvent.vue";
 import Settings from "@/components/Settings.vue";
 import LoadingScreen from "@/components/LoadingScreen.vue";
 import EventOverview from "@/components/EventOverview.vue";
+import Event from "@/components/Event.vue";
 
 </script>
 
@@ -21,17 +22,17 @@ export default {
         return {
             testMsg: 'test message',
             register: false,
-            showWindow: 2,
+            showWindow: config.view.Event,
             bearerTokenExists: false,
             config
         }
     },
-    beforeMount() {
-        this.bearerTokenExists = localStorage.getItem("BearerToken") !== null;
-        if (this.bearerTokenExists) {
-            this.showWindow = config.view.Dashboard
-        }
-    },
+    // beforeMount() {
+    //     this.bearerTokenExists = localStorage.getItem("BearerToken") !== null;
+    //     if (this.bearerTokenExists) {
+    //         this.showWindow = config.view.Dashboard
+    //     }
+    // },
     methods: {
         sucessfulLogin() {
             this.showWindow = config.view.Dashboard;
@@ -67,4 +68,5 @@ export default {
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings"></Settings>
+  <Event v-if="showWindow === config.view.Event"></Event>
 </template>
