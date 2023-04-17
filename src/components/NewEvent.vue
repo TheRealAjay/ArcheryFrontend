@@ -1,4 +1,5 @@
 <template>
+    <LoadingScreen v-if="this.loading === true"></LoadingScreen>
     <div class="container">
         <div class="row">
             <form class="archery-form-style">
@@ -117,10 +118,11 @@
 import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 import axios from "axios";
 import config from "../../config.json";
+import LoadingScreen from "@/components/LoadingScreen.vue";
 
 export default {
     name: "NewEvent",
-    components: {ValidatedInput},
+    components: {LoadingScreen, ValidatedInput},
     emits:['setShowWindow'],
     data() {
         return {
@@ -166,7 +168,8 @@ export default {
                 targets: 1,
                 participants: 2
             },
-            currentIndex: 0
+            currentIndex: 0,
+            loading: false,
         }
     },
     methods: {
@@ -189,7 +192,7 @@ export default {
             })
         },
         async createEvent() {
-            this.$emit('setShowWindow', config.view.LoadingScreen)
+            this.loading = true;
             await this.eventRequest()
             await this.targetRequest()
             await this.participantRequest()
@@ -261,6 +264,7 @@ export default {
                 }
             })
                 .then(function (response) {
+                    this.loading = false;
                     return response;
                 })
                 .catch(err => console.log(err + "ERROR caught"))

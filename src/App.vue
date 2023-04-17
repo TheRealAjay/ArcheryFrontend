@@ -67,5 +67,4 @@ export default {
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings"></Settings>
-    <LoadingScreen v-if="showWindow === config.view.LoadingScreen"></LoadingScreen>
 </template>
