@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Tilt+Warp&display=swap');
 
 * {
-    color: #FFFFFF;
+    color : #FFFFFF;
 }
 
 body {
-    background-color: #0A1929;
-    color       : #FFFFFF;
-    font-family : Lato, Arial, serif;
+    background-color : #0A1929;
+    color            : #FFFFFF;
+    font-family      : Lato, Arial, serif;
 }
 
 body, .offcanvas {
@@ -15,15 +15,15 @@ body, .offcanvas {
 }
 
 .archery-form-style input.form-control {
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid #FFFFFF;
-    background-color: #0A1929 !important;
-    color: #FFFFFF;
+    border           : none;
+    border-radius    : 0;
+    border-bottom    : 2px solid #FFFFFF;
+    background-color : #0A1929 !important;
+    color            : #FFFFFF;
 }
 
 .archery-form-style input.form-control::placeholder {
-    color: #9b9b9b;
+    color : #9b9b9b;
 }
 
 
@@ -31,28 +31,28 @@ body, .offcanvas {
 .archery-form-style input.form-control:-webkit-autofill:hover,
 .archery-form-style input.form-control:-webkit-autofill:focus,
 .archery-form-style input.form-control:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #0A1929 inset !important;
+    -webkit-box-shadow : 0 0 0 30px #0A1929 inset !important;
 }
 
 .archery-form-style input.form-control:-webkit-autofill {
-    -webkit-text-fill-color: #FFFFFF !important;
-    -webkit-box-shadow : 0 0 0 30px #0A1929 inset !important;
+    -webkit-text-fill-color : #FFFFFF !important;
+    -webkit-box-shadow      : 0 0 0 30px #0A1929 inset !important;
 }
 
 .archery-form-style input.form-control:focus,
 .archery-form-style input.form-control:active {
-    box-shadow: none;
+    box-shadow : none;
 }
 
 .archery-form-style div.error-message {
-    margin-left: 12px;
+    margin-left : 12px;
 }
 
 .archery-form-style button.btn {
-    border: #FFFFFF solid 1px;
-    color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow : none;
+    border        : #FFFFFF solid 1px;
+    color         : #FFFFFF;
+    border-radius : 10px;
+    box-shadow    : none;
 }
 
 .archery-form-style div.error-message {
@@ -65,11 +65,11 @@ body, .offcanvas {
     border-radius : 10px;
 }
 
-.archery-form-style input,
-.archery-form-style p,
-.archery-form-style button {
-    opacity: 0.65;
-}
+/*.archery-form-style input,*/
+/*.archery-form-style p,*/
+/*.archery-form-style button {*/
+/*    opacity : 0.65;*/
+/*}*/
 
 /*.archery-form-style input[type="date"],*/
 /*.archery-form-style input[type="time"]*/
@@ -79,18 +79,18 @@ body, .offcanvas {
 /*}*/
 
 ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    opacity: 0.65;
+    filter  : invert(1);
+    opacity : 0.65;
 }
 
 
 #app div.container-fluid {
-    padding: 0;
+    padding : 0;
 }
 
-button.navbar-toggler:focus{
-    box-shadow: none;
-    opacity : 0.65;
+button.navbar-toggler:focus {
+    box-shadow : none;
+    opacity    : 0.65;
 }
 
 .header {
@@ -169,33 +169,49 @@ button.navbar-toggler:focus{
     border        : 2px solid white;
 }
 
-div.offcanvas div.offcanvas-body{
-    font-size: 24px;
+div.offcanvas div.offcanvas-body {
+    font-size : 24px;
 }
 
-div.offcanvas div.offcanvas-body li{
-    margin-bottom: 1%;
+div.offcanvas div.offcanvas-body li {
+    margin-bottom : 1%;
 }
 
-div.offcanvas-body div.profile{
-    margin-bottom: 20%;
+div.offcanvas-body div.profile {
+    margin-bottom : 20%;
 }
 
-div.offcanvas-body div.profile img{
-    margin-bottom: 5%;
+div.offcanvas-body div.profile img {
+    margin-bottom : 5%;
 }
 
-div.offcanvas-body{
-    margin-left: 5%;
+div.offcanvas-body {
+    margin-left : 5%;
 }
 
-div.home-container img.home-image{
-    position: absolute;
-    right: 0;
-    max-width: 100%;
+div.home-container img.home-image {
+    position  : absolute;
+    right     : 0;
+    max-width : 100%;
 }
 
-.archery-form-style a{
-    color: #FFFFFF;
-    text-decoration: none;
+.archery-form-style a {
+    color           : #FFFFFF;
+    text-decoration : none;
+}
+
+.archery-form-style button.btn.btn-outline {
+    width         : 153px;
+    max-width     : 153px;
+    height        : 40px;
+    border        : #FFFFFF solid 1px;
+    color         : #FFFFFF;
+    border-radius : 10px;
+    transition    : all .3s ease-in-out;
+}
+
+.archery-form-style button.btn.btn-outline:hover {
+    background-color : #FFFFFF;
+    color            : #000000;
+    transition       : all .3s ease-in-out;
 }

@@ -34,7 +34,9 @@
                     <ValidatedInput v-model="values.eventData.time" error-msg="Bitte befüllen Sie dieses Feld"
                                     type="time" label="Uhrzeit*" :valid="validation.time"
                                     :optional-validation=true></ValidatedInput>
-                    <button class="btn mt-2" type="button" @click="show.current=show.targets">Weiter</button>
+                    <button class="btn btn-outline mt-2 float-end" type="button" @click="show.current=show.targets">
+                        Weiter
+                    </button>
                 </div>
                 <div class="col-12" v-if="show.current === show.targets">
                     <div class="row" v-for="(target, key, index) in values.targets">
@@ -46,7 +48,7 @@
                         <div v-if="1 < Object.keys(values.targets).length" class="col-2">
                             <a href="#">
                                 <font-awesome-icon :icon="['far', 'trash-can']" size="xl" style="color: #ffffff;"
-                                                   @click="deleteTarget(key)"/>
+                                                   @click="deleteTarget(key)" />
                             </a>
                         </div>
                         <div v-if="index === Object.keys(values.targets).length-1" style="font-size: 30px"
@@ -54,12 +56,13 @@
                             <a href="#" @click="addTarget()">+</a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button class="btn mt-2" type="button" @click="show.current=show.eventData">Zurück</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn mt-2" type="button" @click="show.current=show.participants">Weiter
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <button class="btn mt-2 btn-outline" type="button" @click="show.current=show.eventData">
+                                Zurück
+                            </button>
+                            <button class="btn mt-2 btn-outline float-end" type="button"
+                                    @click="show.current=show.participants">Weiter
                             </button>
                         </div>
                     </div>
@@ -71,7 +74,7 @@
                                              v-model="this.values.participants[index]['nickname']"
                                              error-msg="Bitte befüllen Sie dieses Feld" :valid=true
                                              :optional-validation=true></validated-input>
-                            <validated-input label="Email*" type="email"
+                            <validated-input label="Email" type="email"
                                              v-model="this.values.participants[index]['email']"
                                              error-msg="Bitte befüllen Sie dieses Feld" :valid=true
                                              :optional-validation=true></validated-input>
@@ -87,7 +90,7 @@
                         <div v-if="1 < values.participants.length" class="col-2">
                             <a href="#">
                                 <font-awesome-icon :icon="['far', 'trash-can']" size="xl" style="color: #ffffff;"
-                                                   @click="deleteParticipant(index)"/>
+                                                   @click="deleteParticipant(index)" />
                             </a>
                         </div>
                         <div v-if="index === values.participants.length-1" style="font-size: 30px" class="col-2">
@@ -95,11 +98,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <button class="btn mt-2" type="button" @click="show.current=show.targets">Zurück</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn mt-2" type="button" @click="createEvent()">Event Anlegen</button>
+                        <div class="col-12">
+                            <button class="btn mt-2 btn-outline" type="button" @click="show.current=show.targets">
+                                Zurück
+                            </button>
+                            <button class="btn mt-2 btn-outline float-end" type="button" @click="createEvent()">
+                                Event Anlegen
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import EventHistory from "@/components/EventHistory.vue";
 import Home from "@/components/Home.vue";
 import NewEvent from "@/components/NewEvent.vue";
 import Settings from "@/components/Settings.vue";
+import LoadingScreen from "@/components/LoadingScreen.vue";
 
 </script>
 
@@ -34,6 +35,7 @@ export default {
         sucessfulLogin() {
             this.showWindow = config.view.Dashboard;
             this.bearerTokenExists = true;
+            this.$forceUpdate();
         },
         logout() {
             localStorage.clear();
@@ -64,4 +66,5 @@ export default {
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings"></Settings>
+    <LoadingScreen></LoadingScreen>
 </template>

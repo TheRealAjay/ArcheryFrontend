@@ -18,7 +18,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <div class="profile">
-                        <img v-if="loggedin" :src=profilePicture class="profile-pic" alt="your mother">
+                        <img v-if="loggedin" :src=profilePicture class="profile-pic" alt="profileImg">
                         <img v-else src="../assets/images/logo.png" alt="">
                         <p class="offcanvas-title" id="offcanvasNavbarLabel">{{ username }}</p>
                     </div>
