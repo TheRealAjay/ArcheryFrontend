@@ -9,6 +9,7 @@ import Home from "@/components/Home.vue";
 import NewEvent from "@/components/NewEvent.vue";
 import Settings from "@/components/Settings.vue";
 import LoadingScreen from "@/components/LoadingScreen.vue";
+import EventOverview from "@/components/EventOverview.vue";
 
 </script>
 
@@ -61,10 +62,10 @@ export default {
         </div>
     </div>
     <Dashboard v-if="showWindow === config.view.Dashboard" @setShowWindow="(param) => showWindow = param"></Dashboard>
-    <Events v-if="showWindow === config.view.EventOverview" @setShowWindow="(param) => showWindow = param"></Events>
+    <EventOverview v-if="showWindow === config.view.EventOverview" @setShowWindow="(param) => showWindow = param"></EventOverview>
     <EventHistory v-if="showWindow === config.view.EventHistory"
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
-    <NewEvent v-if="showWindow === config.view.NewEvent"></NewEvent>
+    <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings"></Settings>
-    <LoadingScreen></LoadingScreen>
+    <LoadingScreen v-if="showWindow === config.view.LoadingScreen"></LoadingScreen>
 </template>

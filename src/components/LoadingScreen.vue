@@ -21,9 +21,6 @@ export default {
 </script>
 
 <style scoped>
-body {
-    background : #282828;
-}
 
 .overlay {
     position         : fixed;

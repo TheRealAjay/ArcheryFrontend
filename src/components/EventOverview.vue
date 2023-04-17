@@ -31,7 +31,7 @@
 <script>
 import config from "../../config.json"
 export default {
-    name: "EventOverfiew",
+    name: "EventOverview",
     emits: ["setShowWindow"],
     data(){
         return{
