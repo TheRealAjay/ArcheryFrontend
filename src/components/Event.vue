@@ -54,12 +54,12 @@
         <button @click="previousParticipant()" class="btn text-uppercase">Zurück</button>
       </div>
       <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1">
-        <button class="btn text-uppercase">Event Beenden</button>
+        <button @click="finishEvent()" class="btn text-uppercase">Event Beenden</button>
       </div>
       <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1">
-        <button class="btn text-uppercase">Nächstes Ziel</button>
+        <button @click="nextTarget()" class="btn text-uppercase">Nächstes Ziel</button>
       </div>
-      <div class="col-6" v-if="currentParticipant != participants.length-1 && currentTarget != targets.length-1">
+      <div class="col-6" v-if="currentParticipant != participants.length-1">
         <button @click="nextParticipant()" class="btn text-uppercase">Nächster Spieler</button>
       </div>
 
@@ -78,7 +78,8 @@ export default {
         getTargets: "/Archery/getTargets/",
         getParticipants: "/Archery/getParticipants/",
         getEventInfo: "/Archery/getEventInfo/",
-        addScores: "/Archery/addScores"
+        addScores: "/Archery/addScores/",
+        finishEvent: "/Archery/finishEvent/"
       },
       targets: [],
       participants: [],
@@ -106,7 +107,7 @@ export default {
     },
   },
   name: "Event",
-  props: ['eventID'],
+  props: ['eventId'],
   async beforeMount() {
     await this.getTargets();
     await this.getParticipants();
@@ -123,7 +124,7 @@ export default {
           "Accept": "*/*",
         },
         data: {
-          eventID: 3,
+          eventID: this.eventId,
         }
       })
           .then(function (response) {
@@ -144,7 +145,7 @@ export default {
           "Accept": "*/*",
         },
         data: {
-          eventID: 3,
+          eventID: this.eventId,
         }
       })
           .then(function (response) {
@@ -165,7 +166,7 @@ export default {
           "Accept": "*/*",
         },
         data: {
-          eventID: 3,
+          eventID: this.eventId,
         }
       })
           .then(function (response) {
@@ -246,8 +247,36 @@ export default {
       this.arrowValues[this.scores[this.currentParticipant].position]=this.scores[this.currentParticipant].value
       console.log(this.scores)
     },
-    nextTarget(){
-
+    async nextTarget(){
+      let position;
+      let value;
+      for (let arrowValuesKey in this.arrowValues) {
+        if (this.arrowValues[arrowValuesKey] > 0) {
+          value = this.arrowValues[arrowValuesKey];
+          position = arrowValuesKey;
+        }
+      }
+      if (this.scores.length == this.currentParticipant) {
+        this.scores.push({
+          nickname: this.participants[this.currentParticipant].nickName,
+          value: value,
+          position: position
+        })
+      } else {
+        this.scores[this.currentParticipant] =
+            {
+              nickname: this.participants[this.currentParticipant].nickName,
+              value: value,
+              position: position
+            }
+      }
+      this.currentParticipant=0;
+      this.currentTarget++;
+      for (let arrowValuesKey in this.arrowValues) {
+        this.arrowValues[arrowValuesKey] = -1
+      }
+      console.log(this.scores)
+      await this.sendScores()
     },
     async sendScores(){
       let scores = this.scores
@@ -272,7 +301,32 @@ export default {
           })
           .catch(err => console.log(err + " ERROR caught in sendScores() in Event.vue"))
       if (response !== undefined) {
+        console.log(response)
+        return response;
+      }
+    },
+    async finishEvent(){
 
+
+
+      let response = await axios({
+        url: config.api.url + this.api.finishEvent,
+        method: "post",
+        headers: {
+          "Authorization": `Bearer ${localStorage.BearerToken}`,
+          "Content-Type": "application/json",
+          "Accept": "*/*",
+        },
+        data: {
+          eventID: this.eventId
+        }
+      })
+          .then(function (response) {
+            return response;
+          })
+          .catch(err => console.log(err + " ERROR caught in sendScores() in Event.vue"))
+      if (response !== undefined) {
+        console.log(response)
         return response;
       }
     }
