@@ -21,18 +21,18 @@ export default {
         return {
             testMsg: 'test message',
             register: false,
-            showWindow: config.view.Event,
+            showWindow: config.view.Home,
             bearerTokenExists: false,
             eventID: 0,
             config
         }
     },
-    // beforeMount() {
-    //     this.bearerTokenExists = localStorage.getItem("BearerToken") !== null;
-    //     if (this.bearerTokenExists) {
-    //         this.showWindow = config.view.Dashboard
-    //     }
-    // },
+    beforeMount() {
+        this.bearerTokenExists = localStorage.getItem("BearerToken") !== null;
+        if (this.bearerTokenExists) {
+            this.showWindow = config.view.Dashboard
+        }
+    },
     methods: {
         sucessfulLogin() {
             this.showWindow = config.view.Dashboard;
@@ -69,5 +69,5 @@ export default {
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings"></Settings>
-    <Event v-if="showWindow === config.view.Event"></Event>
+    <Event v-if="showWindow === config.view.Event" :event-id=eventID></Event>
 </template>
