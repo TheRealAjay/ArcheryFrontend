@@ -20,7 +20,7 @@
                     <div class="profile">
                         <img v-if="loggedin" :src=profilePicture class="profile-pic" alt="profileImg">
                         <img v-else src="../assets/images/logo.png" alt="">
-                        <p v-if="loggedin" class="offcanvas-title" id="offcanvasNavbarLabel">{{ username }}</p>
+                        <p v-if="loggedin" class="offcanvas-title" id="offcanvasNavbarLabel">@{{ username }}</p>
                         <p v-if="!loggedin" class="offcanvas-title" id="offcanvasNavbarLabel">Archers Companion</p>
                     </div>
                     <ul v-if="loggedin" class="navbar-nav justify-content-end flex-grow-1 pe-3">

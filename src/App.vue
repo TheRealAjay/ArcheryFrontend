@@ -68,6 +68,6 @@ export default {
     <EventHistory v-if="showWindow === config.view.EventHistory"
                   @setShowWindow="(param) => showWindow = param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
-    <Settings v-if="showWindow === config.view.Settings"></Settings>
+    <Settings v-if="showWindow === config.view.Settings" :loggedin="bearerTokenExists" @setShowWindow="(param) => showWindow = param"></Settings>
     <Event v-if="showWindow === config.view.Event" :event-id=eventID></Event>
 </template>
