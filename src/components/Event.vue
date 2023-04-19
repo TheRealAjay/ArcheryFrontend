@@ -13,7 +13,7 @@
             <font-awesome-icon :icon="['fas', 'bullseye']" style="color: #000000;"/>
             {{ target.targetName }}
           </div>
-          <div v-if="currentTarget === index" class="overlay green"></div>
+          <div v-if="currentTarget == index" class="overlay green"></div>
           <div v-if="currentTarget > index" class="overlay blue"></div>
         </div>
       </div>
@@ -133,6 +133,12 @@ export default {
           .catch(err => console.log(err + "ERROR caught"))
       if (response !== undefined) {
         this.targets = response["data"]["targets"]
+        for (let targetsKey in this.targets) {
+          if(this.targets[targetsKey].hasScores==false){
+            this.currentTarget = targetsKey
+            break
+          }
+        }
       }
     },
     async getParticipants() {
@@ -178,7 +184,7 @@ export default {
       }
     },
     selectTarget(index) {
-      if (index !== this.currentTarget) {
+      if (index != this.currentTarget) {
         return
       }
       this.showTargets = false
@@ -271,12 +277,12 @@ export default {
             }
       }
       this.currentParticipant=0;
-      this.currentTarget++;
+
       for (let arrowValuesKey in this.arrowValues) {
         this.arrowValues[arrowValuesKey] = -1
       }
-      console.log(this.scores)
       await this.sendScores()
+      this.currentTarget++;
     },
     async sendScores(){
       let scores = this.scores
@@ -297,18 +303,50 @@ export default {
         }
       })
           .then(function (response) {
+            console.log(response)
             return response;
           })
           .catch(err => console.log(err + " ERROR caught in sendScores() in Event.vue"))
       if (response !== undefined) {
-        console.log(response)
         return response;
       }
     },
+
     async finishEvent(){
 
 
 
+      let position;
+      let value;
+      for (let arrowValuesKey in this.arrowValues) {
+        if (this.arrowValues[arrowValuesKey] > 0) {
+          value = this.arrowValues[arrowValuesKey];
+          position = arrowValuesKey;
+        }
+      }
+      if (this.scores.length == this.currentParticipant) {
+        this.scores.push({
+          nickname: this.participants[this.currentParticipant].nickName,
+          value: value,
+          position: position
+        })
+      } else {
+        this.scores[this.currentParticipant] =
+            {
+              nickname: this.participants[this.currentParticipant].nickName,
+              value: value,
+              position: position
+            }
+      }
+      this.currentParticipant=0;
+
+      for (let arrowValuesKey in this.arrowValues) {
+        this.arrowValues[arrowValuesKey] = -1
+      }
+
+
+
+      await this.sendScores()
       let response = await axios({
         url: config.api.url + this.api.finishEvent,
         method: "post",
