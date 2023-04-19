@@ -8,9 +8,19 @@
 				<p class="mb-3">{{ eventInfo.eventAddress }}</p>
 			</div>
 		</div>
-		<div class="row mt-5">
-			<div class="col-12">
+		<div class="row mt-5 align-items-center">
+			<div class="col-12 col-lg-9">
 				<div class="header">Ergebnisse</div>
+			</div>
+			<div class="col-12 col-lg-3">
+				<div class="archery-button small" @click="$emit('setShowWindow', config.view.EventHistory)">
+					<div class="outline"></div>
+					<div class="text">
+						<font-awesome-icon :icon="['far', 'square-caret-left']" style="color: #ffffff;"/>
+						&nbspZurück
+					</div>
+					<div class="overlay red"></div>
+				</div>
 			</div>
 		</div>
 		<div class="row scoreboard">

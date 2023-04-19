@@ -1,11 +1,11 @@
 <template>
 	<LoadingScreen v-if="loading === true"></LoadingScreen>
 	<div class="container" v-if="loading === false">
-		<div class="row">
-			<div class="col-12">
+		<div class="row align-items-center">
+			<div class="col-12 col-lg-9">
 				<div class="header">Performance Übersicht</div>
 			</div>
-			<div class="col-12">
+			<div class="col-12 col-lg-3">
 				<div class="archery-button small" @click="$emit('setShowWindow', config.view.EventResults)">
 					<div class="outline"></div>
 					<div class="text">

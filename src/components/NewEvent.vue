@@ -90,7 +90,7 @@
                                              error-msg="Bitte befüllen Sie dieses Feld" :valid=true
                                              :optional-validation=true></validated-input>
                             <validated-input label="Email" type="email"
-                                             v-model="this.values.participants[index]['email']"
+                                             v-model="this.values.participants[index]['userEmail']"
                                              error-msg="Bitte befüllen Sie dieses Feld" :valid=true
                                              :optional-validation=true></validated-input>
                             <validated-input label="Vorname*" type="text"
@@ -166,7 +166,7 @@ export default {
                         firstName: "",
                         lastName: "",
                         nickname: "",
-                        email: ""
+						userEmail: ""
                     }
                 ]
             },
@@ -204,7 +204,7 @@ export default {
                 firstName: "",
                 lastName: "",
                 nickname: "",
-                email: ""
+				userEmail: ""
             })
         },
         async createEvent() {
