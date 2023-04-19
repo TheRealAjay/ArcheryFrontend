@@ -74,6 +74,7 @@ import config from "../../config.json";
 export default {
   data() {
     return {
+      emits: ["setShowWindow", "eventID"],
       api: {
         getTargets: "/Archery/getTargets/",
         getParticipants: "/Archery/getParticipants/",
