@@ -1,0 +1,135 @@
+.progress {
+    background: rgba(255, 255, 255, 0.1);
+    justify-content: flex-start;
+    border-radius: 15px;
+    align-items: center;
+    position: relative;
+    display: flex;
+    height: 15px;
+    width: 100%;
+}
+
+.progress-value {
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 15px;
+    background: #fff;
+    height: 15px;
+    width: 0;
+}
+
+.progress-value.value-4 {
+    animation: load-4 1.4s normal forwards;
+}
+
+.progress-value.value-6 {
+    animation: load-6 .4s normal forwards;
+}
+
+.progress-value.value-8 {
+    animation: load-8 .6s normal forwards;
+}
+
+.progress-value.value-10 {
+    animation: load-10 1.1s normal forwards;
+}
+
+.progress-value.value-12 {
+    animation: load-12 .8s normal forwards;
+}
+
+.progress-value.value-14 {
+    animation: load-14 1.3s normal forwards;
+}
+
+.progress-value.value-16 {
+    animation: load-16 1.5s normal forwards;
+}
+
+.progress-value.value-18 {
+    animation: load-18 .5s normal forwards;
+}
+
+.progress-value.value-20 {
+    animation: load-20 .666s normal forwards;
+}
+
+@keyframes load-4 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 11%;
+    }
+}
+
+@keyframes load-6 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 22%;
+    }
+}
+
+@keyframes load-8 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 33%;
+    }
+}
+
+@keyframes load-10 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 44%;
+    }
+}
+
+@keyframes load-12 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 55%;
+    }
+}
+
+@keyframes load-14 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 66%;
+    }
+}
+
+@keyframes load-16 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 77%;
+    }
+}
+
+@keyframes load-18 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 88%;
+    }
+}
+
+@keyframes load-20 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}

@@ -12,7 +12,6 @@ import EventOverview from "@/components/EventOverview.vue";
 import Event from "@/components/Event.vue";
 import EventResults from "@/components/EventResults.vue";
 import PlayerEventResult from "@/components/PlayerEventResult.vue";
-
 </script>
 
 <script>

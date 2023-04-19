@@ -1,36 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Tilt+Warp&display=swap');
 
 * {
-    color : #FFFFFF;
+    color: #FFFFFF;
 }
 
 body {
-    background-color : #0A1929;
-    color            : #FFFFFF;
-    font-family      : Lato, Arial, serif;
+    background-color: #0A1929;
+    color: #FFFFFF;
+    font-family: Lato, Arial, serif;
 }
 
 body, .offcanvas {
-    background-color : #0A1929 !important;
+    background-color: #0A1929 !important;
 }
 
 .archery-form-style input.form-control,
 .archery-form-style select.form-control {
-    border           : none;
-    border-radius    : 0;
-    border-bottom    : 2px solid #FFFFFF;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #FFFFFF;
     /*background-color : #0A1929 !important;*/
-    background-color : transparent;
-    color            : #FFFFFF;
+    background-color: transparent;
+    color: #FFFFFF;
 }
 
 .bg-darkblue {
-    --bs-bg-opacity  : 1;
-    background-color : rgba(10, 25, 41, var(--bs-bg-opacity)) !important;
+    --bs-bg-opacity: 1;
+    background-color: rgba(10, 25, 41, var(--bs-bg-opacity)) !important;
 }
 
 .archery-form-style input.form-control::placeholder {
-    color : #9b9b9b;
+    color: #9b9b9b;
 }
 
 
@@ -38,39 +38,39 @@ body, .offcanvas {
 .archery-form-style input.form-control:-webkit-autofill:hover,
 .archery-form-style input.form-control:-webkit-autofill:focus,
 .archery-form-style input.form-control:-webkit-autofill:active {
-    -webkit-box-shadow : 0 0 0 30px #0A1929 inset !important;
+    -webkit-box-shadow: 0 0 0 30px #0A1929 inset !important;
 }
 
 .archery-form-style input.form-control:-webkit-autofill {
-    -webkit-text-fill-color : #FFFFFF !important;
-    -webkit-box-shadow      : 0 0 0 30px #0A1929 inset !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    -webkit-box-shadow: 0 0 0 30px #0A1929 inset !important;
 }
 
 .archery-form-style input.form-control:focus,
 .archery-form-style input.form-control:active,
 .archery-form-style select.form-control {
-    box-shadow : none;
+    box-shadow: none;
 }
 
 .archery-form-style div.error-message {
-    margin-left : 12px;
+    margin-left: 12px;
 }
 
 .archery-form-style button.btn {
-    border        : #FFFFFF solid 1px;
-    color         : #FFFFFF;
-    border-radius : 10px;
-    box-shadow    : none;
+    border: #FFFFFF solid 1px;
+    color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: none;
 }
 
 .archery-form-style div.error-message {
-    margin-left : 12px;
+    margin-left: 12px;
 }
 
 .archery-form-style button.btn {
-    border        : #FFFFFF solid 1px;
-    color         : #FFFFFF;
-    border-radius : 10px;
+    border: #FFFFFF solid 1px;
+    color: #FFFFFF;
+    border-radius: 10px;
 }
 
 /*.archery-form-style input,*/
@@ -87,277 +87,314 @@ body, .offcanvas {
 /*}*/
 
 ::-webkit-calendar-picker-indicator {
-    filter  : invert(1);
-    opacity : 0.65;
+    filter: invert(1);
+    opacity: 0.65;
 }
 
 
 #app div.container-fluid {
-    padding : 0;
+    padding: 0;
 }
 
 button.navbar-toggler:focus {
-    box-shadow : none;
-    opacity    : 0.65;
+    box-shadow: none;
+    opacity: 0.65;
 }
 
 .header {
-    font-size     : 22px;
-    line-height   : 26px;
-    font-weight   : bold;
-    margin-bottom : 30px;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
 .name {
-    font-size   : 22px;
-    line-height : 26px;
-    font-weight : 600;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 600;
 }
 
 .archery-button {
-    position      : relative;
-    border-radius : 10px;
-    cursor        : pointer;
-    margin-bottom : 30px;
-    min-height    : 55px;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    min-height: 55px;
 }
 
 .archery-button.no-pointer {
-    cursor : default;
+    cursor: default;
 }
 
 .archery-button.large {
-    max-height : 150px;
-    height     : 150px;
+    max-height: 150px;
+    height: 150px;
 }
 
 .archery-button.medium {
-    max-height : 80px;
-    height     : 80px;
+    max-height: 80px;
+    height: 80px;
 }
 
 .archery-button .background {
-    width         : 100%;
-    height        : 100%;
-    object-fit    : cover;
-    border-radius : 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .archery-button.large .background {
-    max-height : 150px;
+    max-height: 150px;
 }
 
 .archery-button.small .background {
-    max-height : 55px;
+    max-height: 55px;
 }
 
 .archery-button.medium .background {
-    max-height : 80px;
+    max-height: 80px;
 }
 
 .archery-button .overlay {
-    position      : absolute;
-    z-index       : 2;
-    width         : 100%;
-    height        : 100%;
-    opacity       : 35%;
-    border-radius : 10px;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    opacity: 35%;
+    border-radius: 10px;
 }
 
 .archery-button .overlay.blue {
-    background-color : #3ED1E8;
+    background-color: #3ED1E8;
 }
 
 .archery-button .overlay.green {
-    background-color : #98EF36;
+    background-color: #98EF36;
 }
 
 .archery-button .overlay.red {
-    background-color : #FF0000;
+    background-color: #FF0000;
 }
 
 .archery-button .overlay.dark {
-    background-color : #000000;
+    background-color: #000000;
 }
 
 .archery-button .overlay.grey {
-    background-color : #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 .archery-button .text {
-    font-family : "Tilt Warp", serif;
-    font-size   : 20px;
-    position    : absolute;
-    left        : 50%;
-    top         : 50%;
-    transform   : translateX(-50%) translateY(-50%);
-    z-index     : 3;
-    width       : 100%;
-    text-align  : center;
+    font-family: "Tilt Warp", serif;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 3;
+    width: 100%;
+    text-align: center;
 }
 
 .archery-button .text.left {
-    padding-left : 25px;
-    text-align   : left;
+    padding-left: 25px;
+    text-align: left;
 }
 
 .archery-button .text .light {
-    font-family : Lato, serif;
-    font-size   : 18px;
+    font-family: Lato, serif;
+    font-size: 18px;
 }
 
 .archery-button .text .light.small {
-    font-size : 14px;
+    font-size: 14px;
 }
 
 .archery-button .outline {
-    position      : absolute;
-    border-radius : 10px;
-    z-index       : 4;
-    width         : 100%;
-    height        : 100%;
-    border        : 2px solid white;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
 }
 
 .archery-button .outline::after {
-    content       : "";
-    display       : inline-block;
-    border-radius : 10px;
-    border        : 1px solid white;
-    z-index       : 4;
-    position      : absolute;
-    left          : 5px;
-    top           : 5px;
-    width         : calc(100% - 10px);
-    height        : calc(100% - 10px);
+    content: "";
+    display: inline-block;
+    border-radius: 8px;
+    border: 1px solid white;
+    z-index: 4;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
 }
 
 div.offcanvas div.offcanvas-body {
-    font-size : 24px;
+    font-size: 24px;
 }
 
 div.offcanvas div.offcanvas-body li {
-    margin-bottom : 1%;
+    margin-bottom: 1%;
 }
 
 div.offcanvas-body div.profile {
-    margin-bottom : 20%;
+    margin-bottom: 20%;
 }
 
 div.offcanvas-body div.profile img {
-    margin-bottom : 5%;
+    margin-bottom: 5%;
 }
 
 div.offcanvas-body {
-    margin-left : 5%;
+    margin-left: 5%;
 }
 
 .archery-form-style a {
-    color           : #FFFFFF;
-    text-decoration : none;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .archery-form-style button.btn.btn-outline {
-    width         : 100%;
-    max-width     : 200px;
-    height        : 40px;
-    border        : #FFFFFF solid 1px;
-    color         : #FFFFFF;
-    border-radius : 10px;
-    transition    : all .3s ease-in-out;
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    border: #FFFFFF solid 1px;
+    color: #FFFFFF;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
 }
 
 .archery-form-style button.btn.btn-outline:hover {
-    background-color : #FFFFFF;
-    color            : #000000;
-    transition       : all .3s ease-in-out;
+    background-color: #FFFFFF;
+    color: #000000;
+    transition: all .3s ease-in-out;
 }
 
 img.home-image {
-    position  : relative;
-    width     : 100%;
-    max-width : 100%;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
 }
 
 
 .bg-img {
-    position  : absolute;
-    bottom    : 0;
-    right     : 0;
-    max-width : 100%;
-    width     : 100%;
-    z-index   : -1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 100%;
+    width: 100%;
+    z-index: -1;
 }
 
 .home-container .title {
-    font-family    : Lato, serif;
-    font-size      : 22px;
-    padding-bottom : 15px;
-    font-weight    : 700;
+    font-family: Lato, serif;
+    font-size: 22px;
+    padding-bottom: 15px;
+    font-weight: 700;
 }
 
 .home-container .text {
-    font-family : Lato, serif;
-    font-size   : 14px;
-    font-weight : 400;
+    font-family: Lato, serif;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .w-15 {
-    width   : auto;
-    padding : 0 15px 0 15px;
+    width: auto;
+    padding: 0 15px 0 15px;
 }
 
 .border-radius-left {
-    border-radius : 50px 0 0 50px;
+    border-radius: 50px 0 0 50px;
 }
 
 .border-radius-right {
-    border-radius : 0 15px 15px 0;
+    border-radius: 0 15px 15px 0;
 }
 
 .border-radius-circle {
-    border        : solid white 3px;
-    border-radius : 50px;
+    border: solid white 3px;
+    border-radius: 50px;
 }
 
-.cursor-pointer{
-    cursor : pointer;
+.cursor-pointer {
+    cursor: pointer;
 }
 
-@media screen and (min-width : 576px) {
+.score-row .score-row-col {
+    transition: .3s;
+    background-color: transparent;
+    color: white;
+}
+
+.score-row:hover .score-row-col {
+    transition: .3s;
+    background-color: white;
+    color: black;
+}
+
+.score-row .score-row-col svg path {
+    transition: .3s;
+    fill: white;
+}
+
+.score-row:hover .score-row-col svg path {
+    transition: .3s;
+    fill: black;
+}
+
+.medal-icon {
+    position: absolute;
+    bottom: -20px;
+    right: -12px;
+}
+
+
+.medal-icon.large {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60px;
+}
+
+
+@media screen and (min-width: 576px) {
     img.home-image {
-        position   : absolute;
-        right      : 0;
-        top        : 60%;
-        transform  : translateY(-50%);
-        max-height : 50%;
-        width      : auto;
-        z-index    : -1;
+        position: absolute;
+        right: 0;
+        top: 60%;
+        transform: translateY(-50%);
+        max-height: 50%;
+        width: auto;
+        z-index: -1;
     }
 
     .bg-img {
-        max-width : 500px;
+        max-width: 500px;
     }
 
     .w-15 {
-        width : 25%;
+        width: 25%;
     }
 }
 
-@media screen and (min-width : 1200px) {
+@media screen and (min-width: 1200px) {
     img.home-image {
-        right      : 0;
-        top        : 50%;
-        max-height : 75%;
-        z-index    : -1;
+        right: 0;
+        top: 50%;
+        max-height: 75%;
+        z-index: -1;
     }
 
 
     .bg-img {
-        max-width : 700px;
+        max-width: 700px;
     }
 
     .w-15 {
-        width : 50%;
+        width: 50%;
     }
 }
