@@ -1,26 +1,43 @@
 <template>
   <div class="container">
-    <div class="col-12">
-      <h3>Performance Übersicht</h3>
-    </div>
-    <div class="col-12">
-      <div class="archery-button small" @click="$emit('setShowWindow', config.view.EventResults)">
-        <div class="outline"></div>
-        <div class="text">
-          <font-awesome-icon :icon="['far', 'square-caret-left']" style="color: #ffffff;"/>
-          &nbspZurück
-        </div>
-        <div class="overlay red"></div>
+    <div class="row">
+      <div class="col-12">
+        <h3>Performance Übersicht</h3>
       </div>
-    </div>
-    <div class="col-12">
-      <h6>{{ eventInfo.formattedDate}}</h6>
-      <h3 class="mb-3">{{ eventInfo.eventName }}</h3>
-    </div>
-    <div class="col-12">
-      <img :src=score.base64Picture alt="Profile Picture">
-      <div>
-        <p>Platz {{place}}</p>
+      <div class="col-12">
+        <div class="archery-button small" @click="$emit('setShowWindow', config.view.EventResults)">
+          <div class="outline"></div>
+          <div class="text">
+            <font-awesome-icon :icon="['far', 'square-caret-left']" style="color: #ffffff;"/>
+            &nbspZurück
+          </div>
+          <div class="overlay red"></div>
+        </div>
+      </div>
+      <div class="col-12">
+        <h6>{{ eventInfo.formattedDate }}</h6>
+        <h3 class="mb-3">{{ eventInfo.eventName }}</h3>
+      </div>
+      <div class="col-12">
+        <img :src=score.base64Picture alt="Profile Picture">
+        <div>
+          <div>Platz {{ place }}</div>
+          <h3>{{firstName}} {{lastName}}</h3>
+          <div>@{{score.userName}}</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div>Zielscheibe</div>
+        <div>Erreichte Punkte</div>
+      </div>
+      <div class="col-12" v-for="arrowScore in arrowScores">
+        <div>{{arrowScore.targetNumber}}</div>
+<!--todo:insert graph here  <div></div>-->
+        <div>{{arrowScore.value}}</div>
+      </div>
+      <div class="col-12">
+        <div>Gesamt</div>
+        <div>{{score.value}} Punkte</div>
       </div>
     </div>
   </div>
@@ -34,10 +51,10 @@ export default {
   name: "PlayerEventResult",
   props: ["score", "eventId"],
   emits: ["setShowWindow"],
-  data(){
-    return{
+  data() {
+    return {
       eventInfo: {},
-      api:{
+      api: {
         getScores: "/Archery/getScoresForUser/",
         getEventInfo: "/Archery/getEventInfo/",
         getParticipantData: "/Archery/getParticipantData/"
@@ -49,7 +66,7 @@ export default {
       config
     }
   },
-  methods:{
+  methods: {
     async getEventInfo() {
       let response = await axios({
         url: config.api.url + this.api.getEventInfo,
@@ -112,10 +129,10 @@ export default {
       })
     }
   },
-  async beforeMount(){
+  async beforeMount() {
     await this.getEventInfo()
     await this.getScoresForUser()
-
+    await this.getParticipantData()
   }
 }
 </script>

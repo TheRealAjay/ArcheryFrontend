@@ -73,7 +73,7 @@ export default {
                   @setShowWindow="(param) => showWindow = param" @set-event-id="(param)=>eventID=param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings" :loggedin="bearerTokenExists" @setShowWindow="(param) => showWindow = param"></Settings>
-    <Event v-if="showWindow === config.view.Event" :event-id=eventID></Event>
+    <Event v-if="showWindow === config.view.Event" :event-id=eventID @set-show-window="(param)=>showWindow=param"></Event>
     <EventResults v-if="showWindow === config.view.EventResults" :event-id="eventID" @set-show-window="(param)=> showWindow=param" @score="(param)=>score=param"></EventResults>
     <PlayerEventResult v-if="showWindow === config.view.PlayerEventResults" :event-id="eventID" :score="score" @set-show-window="(param)=>showWindow=param"></PlayerEventResult>
 </template>

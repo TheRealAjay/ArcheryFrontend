@@ -91,9 +91,9 @@ import LoadingScreen from "@/components/LoadingScreen.vue";
 
 export default {
     components: {LoadingScreen},
+  emits: ["setShowWindow", "eventID"],
     data() {
         return {
-            emits: ["setShowWindow", "eventID"],
             api: {
                 getTargets: "/Archery/getTargets/",
                 getParticipants: "/Archery/getParticipants/",
@@ -113,7 +113,8 @@ export default {
                 arrow1: -1,
                 arrow2: -1,
                 arrow3: -1
-            }
+            },
+          config
         }
     },
     computed: {
@@ -334,7 +335,7 @@ export default {
         },
 
         async finishEvent() {
-
+          this.$emit('setShowWindow', config.view.EventResults)
 
             let position;
             let value;
