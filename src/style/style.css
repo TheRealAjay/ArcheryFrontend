@@ -19,7 +19,8 @@ body, .offcanvas {
     border           : none;
     border-radius    : 0;
     border-bottom    : 2px solid #FFFFFF;
-    background-color : #0A1929 !important;
+    /*background-color : #0A1929 !important;*/
+    background-color : transparent;
     color            : #FFFFFF;
 }
 
@@ -227,12 +228,6 @@ div.offcanvas-body {
     margin-left : 5%;
 }
 
-div.home-container img.home-image {
-    position  : absolute;
-    right     : 0;
-    max-width : 100%;
-}
-
 .archery-form-style a {
     color           : #FFFFFF;
     text-decoration : none;
@@ -252,4 +247,65 @@ div.home-container img.home-image {
     background-color : #FFFFFF;
     color            : #000000;
     transition       : all .3s ease-in-out;
+}
+
+img.home-image {
+    position  : relative;
+    width     : 100%;
+    max-width : 100%;
+}
+
+
+.bg-img {
+    position  : absolute;
+    bottom    : 0;
+    right     : 0;
+    max-width : 100%;
+    width     : 100%;
+    z-index   : -1;
+}
+
+
+@media screen and (min-width : 576px) {
+    img.home-image {
+        position   : absolute;
+        right      : 0;
+        top        : 60%;
+        transform  : translateY(-50%);
+        max-height : 50%;
+        width      : auto;
+        z-index    : -1;
+    }
+
+    .bg-img {
+        max-width : 500px;
+    }
+}
+
+@media screen and (min-width : 1200px) {
+    img.home-image {
+        right      : 0;
+        top        : 50%;
+        max-height : 75%;
+        z-index    : -1;
+    }
+
+
+    .bg-img {
+        max-width : 700px;
+    }
+
+}
+
+.home-container .title {
+    font-family    : Lato, serif;
+    font-size      : 22px;
+    padding-bottom : 15px;
+    font-weight    : 700;
+}
+
+.home-container .text {
+    font-family : Lato, serif;
+    font-size   : 14px;
+    font-weight : 400;
 }
