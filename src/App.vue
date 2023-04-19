@@ -10,6 +10,8 @@ import NewEvent from "@/components/NewEvent.vue";
 import Settings from "@/components/Settings.vue";
 import EventOverview from "@/components/EventOverview.vue";
 import Event from "@/components/Event.vue";
+import EventResults from "@/components/EventResults.vue";
+import PlayerEventResult from "@/components/PlayerEventResult.vue";
 
 </script>
 
@@ -24,6 +26,7 @@ export default {
             showWindow: config.view.Home,
             bearerTokenExists: false,
             eventID: 0,
+            score:{},
             config
         }
     },
@@ -38,6 +41,7 @@ export default {
             this.showWindow = config.view.Dashboard;
             this.bearerTokenExists = true;
             this.$forceUpdate();
+            window.location.reload()
         },
         logout() {
             localStorage.clear();
@@ -66,8 +70,10 @@ export default {
     <EventOverview v-if="showWindow === config.view.EventOverview" @eventID="(param) => eventID = param"
                    @setShowWindow="(param) => showWindow = param"></EventOverview>
     <EventHistory v-if="showWindow === config.view.EventHistory"
-                  @setShowWindow="(param) => showWindow = param"></EventHistory>
+                  @setShowWindow="(param) => showWindow = param" @set-event-id="(param)=>eventID=param"></EventHistory>
     <NewEvent v-if="showWindow === config.view.NewEvent" @setShowWindow="(param) => showWindow = param"></NewEvent>
     <Settings v-if="showWindow === config.view.Settings" :loggedin="bearerTokenExists" @setShowWindow="(param) => showWindow = param"></Settings>
     <Event v-if="showWindow === config.view.Event" :event-id=eventID></Event>
+    <EventResults v-if="showWindow === config.view.EventResults" :event-id="eventID" @set-show-window="(param)=> showWindow=param" @score="(param)=>score=param"></EventResults>
+    <PlayerEventResult v-if="showWindow === config.view.PlayerEventResults" :event-id="eventID" :score="score" @set-show-window="(param)=>showWindow=param"></PlayerEventResult>
 </template>

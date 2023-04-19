@@ -43,7 +43,7 @@ import LoadingScreen from "@/components/LoadingScreen.vue";
 export default {
     name: "EventHistory",
     components: {LoadingScreen},
-    emits: ["setShowWindow"],
+    emits: ["setShowWindow", "setEventId"],
     data() {
         return {
             api: {
@@ -86,7 +86,7 @@ export default {
         },
         clickActive(eventID) {
             this.$emit('setShowWindow', config.view.EventResults);
-            this.$emit('eventID', eventID);
+            this.$emit('setEventId', eventID);
         }
     },
     beforeMount() {

@@ -15,6 +15,7 @@
     "Target": 9,
     "EventResults": 10,
     "Statistics": 11,
-    "LoadingScreen": 12
+    "LoadingScreen": 12,
+    "PlayerEventResults": 13
   }
 }
