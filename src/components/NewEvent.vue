@@ -1,10 +1,24 @@
 <template>
     <LoadingScreen v-if="this.loading === true"></LoadingScreen>
     <div class="container">
+        <div class="row align-items-center mb-4">
+            <div class="col-12 col-lg-9">
+                <div class="header">Event Anlegen</div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="archery-button small" @click="$emit('setShowWindow', config.view.Dashboard)">
+                    <div class="outline"></div>
+                    <div class="text">
+                        <font-awesome-icon :icon="['far', 'square-caret-left']" style="color: #ffffff;" />
+                        &nbspZurück
+                    </div>
+                    <div class="overlay red"></div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <form class="archery-form-style">
                 <div class="col-12">
-                    <h3 class="mb-4">Event Anlegen</h3>
                     <p class="mb-3">
                         Bitte geben Sie die Eventdaten ein, fügen Sie Zielscheiben hinzu und fügen Sie schließlich
                         Teilnehmer hinzu, um ein neues Event zu erstellen.
@@ -132,6 +146,7 @@ export default {
                 addTarget: "/Archery/addTargets/",
                 addParticipant: "/Archery/addParticipant/"
             },
+            config,
             targetIndex: 0,
             values: {
                 eventId: 2,

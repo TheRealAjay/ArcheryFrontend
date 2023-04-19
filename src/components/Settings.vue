@@ -2,10 +2,10 @@
     <LoadingScreen v-if="this.loading === true"></LoadingScreen>
     <div class="container">
         <div class="row align-items-center mb-5">
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-9">
                 <div class="header">Einstellungen</div>
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-3">
                 <div class="archery-button small" @click="$emit('setShowWindow', config.view.Dashboard)">
                     <div class="outline"></div>
                     <div class="text">
