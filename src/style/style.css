@@ -42,7 +42,8 @@ body, .offcanvas {
 }
 
 .archery-form-style input.form-control:focus,
-.archery-form-style input.form-control:active {
+.archery-form-style input.form-control:active,
+.archery-form-style select.form-control{
     box-shadow : none;
 }
 
