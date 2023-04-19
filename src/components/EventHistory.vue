@@ -1,13 +1,11 @@
 <template>
     <LoadingScreen v-if="loading === true"></LoadingScreen>
     <div class="container">
-        <div class="row ">
-            <div class="col-12">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-9">
                 <div class="header">Eventverlauf</div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-lg-3">
                 <div class="archery-button small" @click="$emit('setShowWindow', config.view.EventOverview)">
                     <div class="outline"></div>
                     <div class="text">
@@ -16,9 +14,6 @@
                     </div>
                     <div class="overlay red"></div>
                 </div>
-            </div>
-            <div class="col-12">
-
             </div>
         </div>
         <div class="row">

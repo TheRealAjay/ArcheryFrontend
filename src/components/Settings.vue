@@ -17,13 +17,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <img v-if="loggedin" :src=profilePicture class="profile-pic img-fluid" alt="profileImg">
-                <div class="username">
-                    @{{ username }}
+            <div class="col-12 d-flex justify-content-start align-items-center">
+                <div>
+                    <img v-if="loggedin" :src=profilePicture class="profile-pic img-fluid" alt="profileImg">
+                </div>
+                <div class="ms-3">
+                    <div class="name">
+                        {{ firstName }} {{ lastName }}
+                    </div>
+                    <div class="username">
+                        @{{ username }}
+                    </div>
                 </div>
             </div>
         </div>
+        <form action="">
+            <div class="row">
+                <div class="col-12">
+<!--                    <ValidatedInput v-model="values.firstName" error-msg="Bitte befüllen Sie dieses Feld"-->
+<!--                                    type="text" label="Vorname*" :valid="validation.eventName"-->
+<!--                                    :optional-validation=true />-->
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -31,10 +47,11 @@
 import config from "../../config.json";
 import axios from "axios";
 import LoadingScreen from "@/components/LoadingScreen.vue";
+import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 
 export default {
     name: "Settings",
-    components: {LoadingScreen},
+    components: {ValidatedInput, LoadingScreen},
     props: ["loggedin"],
     emits: ["setShowWindow"],
     data() {
@@ -46,7 +63,19 @@ export default {
             profilePicture: localStorage.ProfilePicture,
             username: localStorage.Username,
             loading: false,
-            config
+            firstName: "",
+            lastName: "",
+            values: {
+                firstName: "",
+                lastName: "",
+                nickName: "",
+            },
+            validation: {
+                firstName: true,
+                lastName: true,
+                nickName: true,
+            },
+            config,
         }
     },
     methods: {
@@ -64,6 +93,9 @@ export default {
                 }
             }).then((result) => {
                 let obj = JSON.parse(result.request.response);
+                console.log(obj)
+                this.firstName = obj.firstName;
+                this.lastName = obj.lastName;
                 setTimeout(() => {
                     this.loading = false;
                 }, Math.random() * 500);

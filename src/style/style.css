@@ -24,6 +24,11 @@ body, .offcanvas {
     color            : #FFFFFF;
 }
 
+.bg-darkblue {
+    --bs-bg-opacity  : 1;
+    background-color : rgba(10, 25, 41, var(--bs-bg-opacity)) !important;
+}
+
 .archery-form-style input.form-control::placeholder {
     color : #9b9b9b;
 }
@@ -43,7 +48,7 @@ body, .offcanvas {
 
 .archery-form-style input.form-control:focus,
 .archery-form-style input.form-control:active,
-.archery-form-style select.form-control{
+.archery-form-style select.form-control {
     box-shadow : none;
 }
 
@@ -103,6 +108,12 @@ button.navbar-toggler:focus {
     margin-bottom : 30px;
 }
 
+.name {
+    font-size     : 22px;
+    line-height   : 26px;
+    font-weight   : 600;
+}
+
 .archery-button {
     position      : relative;
     border-radius : 10px;
@@ -120,6 +131,11 @@ button.navbar-toggler:focus {
     height     : 150px;
 }
 
+.archery-button.medium {
+    max-height : 80px;
+    height     : 80px;
+}
+
 .archery-button .background {
     width         : 100%;
     height        : 100%;
@@ -133,6 +149,10 @@ button.navbar-toggler:focus {
 
 .archery-button.small .background {
     max-height : 55px;
+}
+
+.archery-button.medium .background {
+    max-height : 80px;
 }
 
 .archery-button .overlay {
@@ -158,6 +178,10 @@ button.navbar-toggler:focus {
 
 .archery-button .overlay.dark {
     background-color : #000000;
+}
+
+.archery-button .overlay.grey {
+    background-color : #FFFFFF;
 }
 
 .archery-button .text {
@@ -234,8 +258,8 @@ div.offcanvas-body {
 }
 
 .archery-form-style button.btn.btn-outline {
-    width         : 153px;
-    max-width     : 153px;
+    width         : 100%;
+    max-width     : 200px;
     height        : 40px;
     border        : #FFFFFF solid 1px;
     color         : #FFFFFF;
