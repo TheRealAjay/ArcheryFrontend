@@ -259,7 +259,7 @@ div.offcanvas-body {
 
 .archery-form-style button.btn.btn-outline {
     width: 100%;
-    max-width: 200px;
+    max-width: 175px;
     height: 40px;
     border: #FFFFFF solid 1px;
     color: #FFFFFF;
@@ -349,7 +349,8 @@ img.home-image {
 .medal-icon {
     position: absolute;
     bottom: -20px;
-    right: -12px;
+    left: -15px;
+    width: 45px;
 }
 
 
