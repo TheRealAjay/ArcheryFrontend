@@ -49,6 +49,11 @@
                     <ValidatedInput v-model="values.eventData.time" error-msg="Bitte befüllen Sie dieses Feld"
                                     type="time" label="Uhrzeit*" :valid="validation.time"
                                     :optional-validation=true></ValidatedInput>
+                  <select v-model="values.eventData.scoringType"
+                          class="form-select bg-darkblue form-control my-3">
+                    <option selected value=false>Dreipfeil Wertung</option>
+                    <option value=true>Zweipfeil Wertung</option>
+                  </select>
                     <button class="btn btn-outline mt-2 float-end" type="button" @click="showTargets()">
                         Weiter
                     </button>
@@ -183,6 +188,7 @@ export default {
                     city: "",
                     date: "",
                     time: "",
+                    scoringType: 'false'
                 },
                 targets: {
                     0: ""
@@ -274,6 +280,7 @@ export default {
             }
         },
         async eventRequest() {
+            let type = 'true' == this.values.eventData.scoringType
             let response = await axios({
                 url: config.api.url + this.api.createEvent,
                 method: "put",
@@ -289,6 +296,7 @@ export default {
                     city: this.values.eventData.city,
                     date: this.values.eventData.date.replace("-", "."),
                     time: this.values.eventData.time,
+                    scoringType: type,
                     arrowValue: 0,
                     userEmail: localStorage.Email
                 }
