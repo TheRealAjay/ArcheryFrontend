@@ -205,7 +205,7 @@ export default {
                 time: true,
             },
             show: {
-                current: 2,
+                current: 0,
                 eventData: 0,
                 targets: 1,
                 participants: 2

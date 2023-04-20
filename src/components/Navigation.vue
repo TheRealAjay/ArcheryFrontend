@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-dark mt-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#" @click="homeButton()">
                 <font-awesome-icon :icon="['fas', 'bullseye']" style="color: #000000;"/>
                 Archers Companion
             </a>
@@ -68,6 +68,14 @@ export default {
         changeView(viewIndex) {
             this.$emit('changeView', viewIndex)
             offcanvas.getInstance(document.querySelector(".offcanvas")).hide()
+        },
+        homeButton(){
+          if(this.loggedin){
+            this.changeView(config.view.Dashboard)
+          }
+          else{
+            this.changeView((config.view.Home))
+          }
         }
     },
     props: ["loggedin"],
