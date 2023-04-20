@@ -117,10 +117,12 @@
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <div class="col-12">
+                        <div class="col-6">
                             <button class="btn mt-2 btn-outline" type="button" @click="show.current=show.eventData">
                                 Zurück
                             </button>
+                        </div>
+                        <div class="col-6">
                             <button class="btn mt-2 btn-outline float-end" type="button"
                                     @click="showParticipants()">Weiter
                             </button>
@@ -139,7 +141,8 @@
                                              error-msg="Bitte befüllen Sie dieses Feld" :valid=true
                                              :optional-validation=true @keyup="partialMatch(index)"
                                              :id=index></validated-input>
-                            <div v-if="partialMatchIndex == index" class="position-relative overflow-hidden" style="border: 1px solid white; border-radius: 15px">
+                            <div v-if="partialMatchIndex == index" class="position-relative overflow-hidden"
+                                 style="border: 1px solid white; border-radius: 15px">
                                 <div class="autocomplete">
                                     <div v-for="(user, matchIndex) in this.partialMatches"
                                          @click="autoFill(user, index)"
@@ -177,10 +180,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <button class="btn mt-2 btn-outline" type="button" @click="show.current=show.targets">
                                 Zurück
                             </button>
+                        </div>
+                        <div class="col-6">
                             <button class="btn mt-2 btn-outline float-end" type="button" @click="createEvent()">
                                 Event Anlegen
                             </button>
