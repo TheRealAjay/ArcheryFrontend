@@ -12,28 +12,28 @@
                         Unser Score-Tracking-Tool und benutzerdefinierte Parkours ermöglichen es dir, deine Leistung zu
                         verbessern und dich mit anderen Bogenschützen zu messen. Registriere dich noch heute!
                     </p>
-                    <ValidatedInput v-model="email" label="Email" type="email"
+                    <ValidatedInput v-model="email" label="E-Mail*" type="email"
                                     error-msg="Bitte geben sie eine valide Email ein"
                                     :valid=validation.email optional-error-msg="Diese Email wurde bereits registriert"
                                     :optional-validation=validation.emailUnique></ValidatedInput>
-                    <ValidatedInput v-model="username" label="Nutzername" type="text"
+                    <ValidatedInput v-model="username" label="Nutzername*" type="text"
                                     error-msg="3-20 Zeichen;Nur Zahlen und Buchstaben"
                                     :valid=validation.username
                                     optional-error-msg="Diser Nutzername ist bereits vergeben"
                                     :optional-validation=validation.usernameUnique></ValidatedInput>
-                    <ValidatedInput v-model="firstName" label="Vorname" type="text"
+                    <ValidatedInput v-model="firstName" label="Vorname*" type="text"
                                     error-msg="Bitte geben sie Ihren Vornamen ein"
                                     :valid=validation.firstName :optional-validation=true></ValidatedInput>
-                    <ValidatedInput v-model="lastName" label="Nachname" type="text"
+                    <ValidatedInput v-model="lastName" label="Nachname*" type="text"
                                     error-msg="Bitte geben sie Ihren Nachnamen ein"
                                     :valid=validation.lastName :optional-validation=true></ValidatedInput>
-                    <ValidatedInput v-model="password" label="Passwort" type="password"
+                    <ValidatedInput v-model="password" label="Passwort*" type="password"
                                     error-msg="Min. 8 Zeichen lang;Min. ein Groß- und Kleinbuchstaben;Min. eine Zahl und ein Sonderzeichen"
                                     :valid=validation.password :optional-validation=true></ValidatedInput>
-                    <ValidatedInput v-model="repeatPassword" label="Passwort wiederholen" type="password"
+                    <ValidatedInput v-model="repeatPassword" label="Passwort wiederholen*" type="password"
                                     error-msg="Passwort stimmt nicht überein" :valid=validation.repeatPassword
                                     :optional-validation=true></ValidatedInput>
-                    <button @click="registerApi" type="button" class="btn mt-4">Registrieren</button>
+                    <button @click="registerApi" type="button" class="btn mt-4 btn-outline">Registrieren</button>
                 </form>
             </div>
         </div>

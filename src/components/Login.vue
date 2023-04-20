@@ -5,10 +5,10 @@
             <div class="col-12 col-lg-8">
                 <form novalidate class="archery-form-style">
                     <h3 class="mb-4">Login</h3>
-                    <ValidatedInput v-model="email" type="email" label="Nutzername/Email" :valid=true></ValidatedInput>
+                    <ValidatedInput v-model="email" type="email" label="E-Mail" :valid=true></ValidatedInput>
                     <ValidatedInput error-msg="Nutzername oder Passwort falsch" v-model="password"
                                     type="password" label="Passwort" :valid=valid></ValidatedInput>
-                    <button @click="fetchToken" class="btn text-uppercase mt-4" type="button">Anmelden</button>
+                    <button @click="fetchToken" class="btn text-uppercase mt-4 btn-outline" type="button">Anmelden</button>
                     <p class="mt-4 mb-0">Noch keinen Account erstellt? </p>
                     <a href="#" class="archery-link" @click="$emit('register')">Hier registrieren!</a>
                 </form>
