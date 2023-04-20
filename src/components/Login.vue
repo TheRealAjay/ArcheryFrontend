@@ -64,12 +64,13 @@ export default {
                 .catch(err => console.log(err + "ERROR caught"))
             if (response !== undefined) {
                 this.valid = true;
-                this.loading = false;
                 this.$emit('success')
             } else {
-                this.loading = false;
                 this.valid = false;
             }
+          setTimeout(() => {
+            this.loading = false;
+          }, Math.random() * 500 + 200);
         }
     }
 }
