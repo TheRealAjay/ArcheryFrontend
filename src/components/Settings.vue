@@ -147,6 +147,7 @@ export default {
 
 /**/
 .bow {
+    z-index   : 1;
     position  : absolute;
     top       : 120px;
     left      : 345px;
