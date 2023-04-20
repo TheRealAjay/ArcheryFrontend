@@ -27,8 +27,44 @@
                         Alle Felder mit einem Stern (*) müssen ausgefüllt werden.
                     </p>
                 </div>
-                <div class="col-12">
-                    <!--todo: implement display to show eventdaten/zielscheiben/teilnehmer-->
+                <div class="row">
+                    <div class="archery-button col-12" :class="(show.current == show.eventData) ? 'large' : 'medium'">
+                      <div class="outline"></div>
+                      <div class="text left">
+                        <div :class="(show.current == show.eventData) ? '' : 'light small'">
+                          1. Eventdaten
+                        </div>
+                      </div>
+                      <div v-if="show.current == show.eventData" class="overlay green"></div>
+                      <img v-if="show.current == show.eventData" src="./../assets/images/target.png"
+                           class="background" alt="Einstellungen">
+                      <div v-if="show.current > show.eventData" class="overlay blue"></div>
+                    </div>
+                  <div class="archery-button col-12" :class="(show.current == show.targets) ? 'large' : 'medium'">
+                    <div class="outline"></div>
+                    <div class="text left">
+                      <div :class="(show.current == show.targets) ? '' : 'light small'">
+                        2. Zielscheiben
+                      </div>
+                    </div>
+                    <div v-if="show.current == show.targets" class="overlay green"></div>
+                    <img v-if="show.current == show.targets" src="./../assets/images/target.png"
+                         class="background" alt="Einstellungen">
+                    <div v-if="show.current > show.targets" class="overlay blue"></div>
+                    <div v-if="show.current < show.targets" class="overlay grey"></div>
+                  </div>
+                  <div class="archery-button col-12" :class="(show.current == show.participants) ? 'large' : 'medium'">
+                    <div class="outline"></div>
+                    <div class="text left">
+                      <div :class="(show.current == show.participants) ? '' : 'light small'">
+                        3. Teilnehmer
+                      </div>
+                    </div>
+                    <div v-if="show.current == show.participants" class="overlay green"></div>
+                    <img v-if="show.current == show.participants" src="./../assets/images/target.png"
+                         class="background" alt="Einstellungen">
+                    <div v-if="show.current < show.participants" class="overlay grey"></div>
+                  </div>
                 </div>
                 <div class="col-12" v-if="show.current === show.eventData">
                     <ValidatedInput v-model="values.eventData.eventName" error-msg="Bitte befüllen Sie dieses Feld"
