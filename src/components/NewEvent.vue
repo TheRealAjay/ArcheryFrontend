@@ -106,14 +106,14 @@
                             </div>
                         </div>
                         <div v-if="1 < Object.keys(values.targets).length" class="col-2">
-                            <a href="#">
+                            <a  class="cursor-pointer">
                                 <font-awesome-icon :icon="['far', 'trash-can']" size="xl" style="color: #ffffff;"
                                                    @click="deleteTarget(key, index)" />
                             </a>
                         </div>
                         <div v-if="index === Object.keys(values.targets).length-1" style="font-size: 30px"
                              class="col-2">
-                            <a href="#" @click="addTarget()">+</a>
+                            <a class="cursor-pointer" @click="addTarget()">+</a>
                         </div>
                     </div>
                     <div class="row mt-4">

@@ -85,16 +85,19 @@
                     Zurück
                 </button>
             </div>
+            <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1 && currentParticipant == 0"></div>
             <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1">
                 <button @click="finishEvent()" class="btn mt-2 btn-outline float-end text-uppercase">
                     Event Beenden
                 </button>
             </div>
+            <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1 && currentParticipant == 0"></div>
             <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1">
                 <button @click="nextTarget()" class="btn mt-2 btn-outline float-end text-uppercase">
                     Nächstes Ziel
                 </button>
             </div>
+            <div class="col-6" v-if="currentParticipant != participants.length-1 && currentParticipant == 0"></div>
             <div class="col-6" v-if="currentParticipant != participants.length-1">
                 <button @click="nextParticipant()" class="btn mt-2 btn-outline float-end text-uppercase">
                     Nächster Spieler
@@ -293,7 +296,8 @@ export default {
             }
             this.arrowValues[this.scores[this.currentParticipant].position] = this.scores[this.currentParticipant].value
         },
-        async nextTarget() {
+        nextTarget() {
+          this.loading=true
             let position;
             let value;
             for (let arrowValuesKey in this.arrowValues) {
@@ -321,8 +325,12 @@ export default {
             for (let arrowValuesKey in this.arrowValues) {
                 this.arrowValues[arrowValuesKey] = -1
             }
-            await this.sendScores()
+            this.sendScores()
             this.currentTarget++;
+
+          setTimeout(() => {
+            this.loading = false;
+          }, Math.random() * 200 + 200);
         },
         async sendScores() {
             let scores = this.scores
@@ -343,6 +351,7 @@ export default {
                 }
             })
                 .then(function (response) {
+
                     return response;
                 })
                 .catch(err => console.log(err + " ERROR caught in sendScores() in Event.vue"))
@@ -381,8 +390,6 @@ export default {
             for (let arrowValuesKey in this.arrowValues) {
                 this.arrowValues[arrowValuesKey] = -1
             }
-
-
             await this.sendScores()
             let response = await axios({
                 url: config.api.url + this.api.finishEvent,
