@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <input :placeholder=label v-model="inputValue" :type="type" class="form-control">
+    <input :id=id  :placeholder=label v-model="inputValue" :type="type" class="form-control">
     <div v-for="temp in errorMsg.split(';')" v-if="!valid" class="text-danger error-message">
       {{temp}}
     </div>
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: "ValidatedInput",
-  props:['label', 'type', 'errorMsg', 'modelValue', 'valid', 'optionalErrorMsg', 'optionalValidation'],
+  props:['label', 'type', 'errorMsg', 'modelValue', 'valid', 'optionalErrorMsg', 'optionalValidation', 'id'],
   computed:{
     inputValue:{
       get(){

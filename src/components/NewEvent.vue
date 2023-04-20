@@ -95,7 +95,13 @@
               <validated-input label="Email" type="email"
                                v-model="this.values.participants[index]['userEmail']"
                                error-msg="Bitte befüllen Sie dieses Feld" :valid=true
-                               :optional-validation=true></validated-input>
+                               :optional-validation=true @keyup="partialMatch(index)" :id=index ></validated-input>
+              <div v-if="partialMatchIndex == index">
+              <div v-for="(user, matchIndex) in this.partialMatches" @click="autoFill(user, index)">
+                <img :src=user.base64Img alt="">
+                {{user.userEmail}}
+              </div>
+              </div>
               <validated-input label="Vorname*" type="text"
                                v-model="this.values.participants[index]['firstName']"
                                error-msg="Bitte befüllen Sie dieses Feld" :valid=true
@@ -140,6 +146,8 @@ import ValidatedInput from "@/components/smallComponents/ValidatedInput.vue";
 import axios from "axios";
 import config from "../../config.json";
 import LoadingScreen from "@/components/LoadingScreen.vue";
+import { useActiveElement } from '@vueuse/core';
+
 
 export default {
   name: "NewEvent",
@@ -150,12 +158,13 @@ export default {
       api: {
         createEvent: "/Archery/createEvent/",
         addTarget: "/Archery/addTargets/",
-        addParticipant: "/Archery/addParticipant/"
+        addParticipant: "/Archery/addParticipant/",
+        getPartialMatches: "/Archery/getUsersByEmail"
       },
       config,
       targetIndex: 0,
       values: {
-        eventId: 2,
+        eventId: 0,
         eventData: {
           eventName: "",
           address: "",
@@ -193,7 +202,22 @@ export default {
       currentIndex: 0,
       loading: false,
       targetValidation: [true],
-      participantValidation: [true]
+      participantValidation: [true],
+      partialMatchIndex: -1,
+      partialMatches: [],
+      activeElement: useActiveElement()
+    }
+  },
+  watch:{
+    activeElement(newValue, oldValue){
+      if(newValue.id && newValue.value){
+        this.partialMatchIndex = newValue.id
+      }
+      else {
+        setTimeout(()=>{
+          this.partialMatchIndex = -1
+        }, 100)
+      }
     }
   },
   methods: {
@@ -342,7 +366,7 @@ export default {
         this.validation.time = false
         valid = false
       }
-      
+
       if (valid) {
         this.show.current = this.show.targets
       }
@@ -362,6 +386,38 @@ export default {
       if (valid) {
         this.show.current = this.show.participants
       }
+    },
+    partialMatch(index){
+      if(this.activeElement.id==index && this.activeElement.value){
+        this.partialMatchIndex = index
+        this.getPartialMatches(index)
+      }else{
+        this.partialMatchIndex = -1
+        this.partialMatches = []
+      }
+    },
+    getPartialMatches(index){
+        axios({
+        url: config.api.url + this.api.getPartialMatches,
+        method: "post",
+        headers: {
+          "Authorization": `Bearer ${localStorage.BearerToken}`,
+          "Content-Type": "application/json",
+          "Accept": "*/*",
+        },
+        data: {
+          email: this.values.participants[index].userEmail,
+          nickname: ""
+        }
+      }).then((result) => {
+        this.partialMatches = result["data"]["users"]
+      })
+    },
+    autoFill(user, index){
+      this.values.participants[index].userEmail = user.userEmail
+      this.values.participants[index].firstName = user.firstName
+      this.values.participants[index].lastName = user.lastName
+      this.values.participants[index].nickname = user.nickName
     }
   }
 }
