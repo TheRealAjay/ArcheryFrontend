@@ -347,14 +347,16 @@ export default {
     },
     showParticipants(){
       let valid = true
-      for (let targetValid in this.targetValidation) {
-          if(this.values.targets[targetValid]){
-              this.targetValidation[targetValid] = true
+      let counter = 0
+      for (let target in this.values.targets) {
+          if(this.values.targets[target]){
+              this.targetValidation[counter] = true
           }
           else {
-            this.targetValidation[targetValid] = false
+            this.targetValidation[counter] = false
             valid = false
           }
+          counter++
       }
 
       if(valid){

@@ -238,7 +238,6 @@ export default {
             for (let arrowValuesKey in this.arrowValues) {
                 this.arrowValues[arrowValuesKey] = -1
             }
-            console.log(this.scores)
             if (this.scores.length != this.currentParticipant) {
                 this.arrowValues[this.scores[this.currentParticipant].position] = this.scores[this.currentParticipant].value
             }
@@ -273,7 +272,6 @@ export default {
                 this.arrowValues[arrowValuesKey] = -1
             }
             this.arrowValues[this.scores[this.currentParticipant].position] = this.scores[this.currentParticipant].value
-            console.log(this.scores)
         },
         async nextTarget() {
             let position;
@@ -325,7 +323,6 @@ export default {
                 }
             })
                 .then(function (response) {
-                    console.log(response)
                     return response;
                 })
                 .catch(err => console.log(err + " ERROR caught in sendScores() in Event.vue"))
@@ -384,7 +381,6 @@ export default {
                 })
                 .catch(err => console.log(err + " ERROR caught in sendScores() in Event.vue"))
             if (response !== undefined) {
-                console.log(response)
                 return response;
             }
         }

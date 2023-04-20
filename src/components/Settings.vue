@@ -93,7 +93,6 @@ export default {
                 }
             }).then((result) => {
                 let obj = JSON.parse(result.request.response);
-                console.log(obj)
                 this.firstName = obj.firstName;
                 this.lastName = obj.lastName;
                 setTimeout(() => {
