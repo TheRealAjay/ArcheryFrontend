@@ -31,7 +31,27 @@
             <h3 class="mb-4">{{ targets[currentTarget].targetName }}</h3>
             <p class="mb-5">Bitte geben Sie die Punkte für alle Spieler ein.</p>
             <h3>{{ participants[currentParticipant].nickName }}</h3>
-            <div class="col-12">
+            <div v-if="eventInfo.scoringType" class="col-12">
+              <select v-model="arrowValues.arrow1" :disabled=disableArrow1
+                      class="form-select bg-darkblue form-control my-3"
+                      aria-label="Default select example">
+                <option selected disabled value="-1">Pfeil 1</option>
+                <option value="10">10 Punkte</option>
+                <option value="8">8 Punkte</option>
+                <option value="6">6 Punkte</option>
+                <option value="0">Nicht Getroffen</option>
+              </select>
+              <select v-model="arrowValues.arrow2" :disabled=disableArrow2
+                      class="form-select bg-darkblue form-control mb-3"
+                      aria-label="Default select example">
+                <option selected disabled value="-1">Pfeil 2</option>
+                <option value="4">4 Punkte</option>
+                <option value="2">2 Punkte</option>
+                <option value="1">1 Punkte</option>
+                <option value="0">Nicht Getroffen</option>
+              </select>
+            </div>
+            <div v-else class="col-12">
                 <select v-model="arrowValues.arrow1" :disabled=disableArrow1
                         class="form-select bg-darkblue form-control my-3"
                         aria-label="Default select example">
