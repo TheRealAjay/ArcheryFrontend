@@ -27,44 +27,16 @@
                         Alle Felder mit einem Stern (*) müssen ausgefüllt werden.
                     </p>
                 </div>
-                <div class="row">
-                    <div class="archery-button col-12" :class="(show.current == show.eventData) ? 'large' : 'medium'">
-                      <div class="outline"></div>
-                      <div class="text left">
-                        <div :class="(show.current == show.eventData) ? '' : 'light small'">
-                          1. Eventdaten
-                        </div>
-                      </div>
-                      <div v-if="show.current == show.eventData" class="overlay green"></div>
-                      <img v-if="show.current == show.eventData" src="./../assets/images/target.png"
-                           class="background" alt="Einstellungen">
-                      <div v-if="show.current > show.eventData" class="overlay blue"></div>
+                <div class="row text mt-5">
+                    <div v-if="show.current == show.eventData" class="header">
+                        1. Eventdaten
                     </div>
-                  <div class="archery-button col-12" :class="(show.current == show.targets) ? 'large' : 'medium'">
-                    <div class="outline"></div>
-                    <div class="text left">
-                      <div :class="(show.current == show.targets) ? '' : 'light small'">
+                    <div v-if="show.current == show.targets" class="header">
                         2. Zielscheiben
-                      </div>
                     </div>
-                    <div v-if="show.current == show.targets" class="overlay green"></div>
-                    <img v-if="show.current == show.targets" src="./../assets/images/target.png"
-                         class="background" alt="Einstellungen">
-                    <div v-if="show.current > show.targets" class="overlay blue"></div>
-                    <div v-if="show.current < show.targets" class="overlay grey"></div>
-                  </div>
-                  <div class="archery-button col-12" :class="(show.current == show.participants) ? 'large' : 'medium'">
-                    <div class="outline"></div>
-                    <div class="text left">
-                      <div :class="(show.current == show.participants) ? '' : 'light small'">
+                    <div v-if="show.current == show.participants" class="header">
                         3. Teilnehmer
-                      </div>
                     </div>
-                    <div v-if="show.current == show.participants" class="overlay green"></div>
-                    <img v-if="show.current == show.participants" src="./../assets/images/target.png"
-                         class="background" alt="Einstellungen">
-                    <div v-if="show.current < show.participants" class="overlay grey"></div>
-                  </div>
                 </div>
                 <div class="col-12" v-if="show.current === show.eventData">
                     <ValidatedInput v-model="values.eventData.eventName" error-msg="Bitte befüllen Sie dieses Feld"
@@ -85,11 +57,11 @@
                     <ValidatedInput v-model="values.eventData.time" error-msg="Bitte befüllen Sie dieses Feld"
                                     type="time" label="Uhrzeit*" :valid="validation.time"
                                     :optional-validation=true></ValidatedInput>
-                  <select v-model="values.eventData.scoringType"
-                          class="form-select bg-darkblue form-control my-3">
-                    <option selected value=false>Dreipfeil Wertung</option>
-                    <option value=true>Zweipfeil Wertung</option>
-                  </select>
+                    <select v-model="values.eventData.scoringType"
+                            class="form-select bg-darkblue form-control my-3">
+                        <option selected value=false>Dreipfeil Wertung</option>
+                        <option value=true>Zweipfeil Wertung</option>
+                    </select>
                     <button class="btn btn-outline mt-2 float-end" type="button" @click="showTargets()">
                         Weiter
                     </button>
@@ -106,7 +78,7 @@
                             </div>
                         </div>
                         <div v-if="1 < Object.keys(values.targets).length" class="col-2">
-                            <a  class="cursor-pointer">
+                            <a class="cursor-pointer">
                                 <font-awesome-icon :icon="['far', 'trash-can']" size="xl" style="color: #ffffff;"
                                                    @click="deleteTarget(key, index)" />
                             </a>
