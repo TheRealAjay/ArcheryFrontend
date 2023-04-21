@@ -80,26 +80,26 @@
                     <option value="0">Nicht Getroffen</option>
                 </select>
             </div>
-            <div class="col-6" v-if="currentParticipant > 0">
+            <div class="col-5" v-if="currentParticipant > 0">
                 <button @click="previousParticipant()" class="btn text-uppercase">
                     Zurück
                 </button>
             </div>
-            <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1 && currentParticipant == 0"></div>
-            <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1">
-                <button @click="finishEvent()" class="btn mt-2 btn-outline float-end text-uppercase">
+            <div class="col-5" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1 && currentParticipant == 0"></div>
+            <div class="col-7" v-if="currentParticipant == participants.length-1 && currentTarget == targets.length-1">
+                <button @click="finishEvent()" class="btn btn-outline float-end text-uppercase">
                     Event Beenden
                 </button>
             </div>
-            <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1 && currentParticipant == 0"></div>
-            <div class="col-6" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1">
-                <button @click="nextTarget()" class="btn mt-2 btn-outline float-end text-uppercase">
+            <div class="col-5" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1 && currentParticipant == 0"></div>
+            <div class="col-7" v-if="currentParticipant == participants.length-1 && currentTarget != targets.length-1">
+                <button @click="nextTarget()" class="btn btn-outline float-end text-uppercase">
                     Nächstes Ziel
                 </button>
             </div>
-            <div class="col-6" v-if="currentParticipant != participants.length-1 && currentParticipant == 0"></div>
-            <div class="col-6" v-if="currentParticipant != participants.length-1">
-                <button @click="nextParticipant()" class="btn mt-2 btn-outline float-end text-uppercase">
+            <div class="col-5" v-if="currentParticipant != participants.length-1 && currentParticipant == 0"></div>
+            <div class="col-7" v-if="currentParticipant != participants.length-1">
+                <button @click="nextParticipant()" class="btn btn-outline float-end text-uppercase">
                     Nächster Spieler
                 </button>
             </div>
